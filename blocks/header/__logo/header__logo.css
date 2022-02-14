@@ -2,7 +2,7 @@
   width: 142px;
   height: 33px;
   background-image: url(../../../image/Vector.svg);
-  background-size: cover;
+  background-size: contain;
   position: absolute;
   left: 0;
   top: 0;
