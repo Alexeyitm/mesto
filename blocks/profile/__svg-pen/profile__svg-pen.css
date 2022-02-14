@@ -1,0 +1,15 @@
+.profile__svg-pen {
+  width: 10px;
+  height: 10px;
+  background-image: url(../../../image/Vector-pen.svg);
+  background-size: contain;
+  margin: 0 auto;
+  align-self: center;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__svg-pen {
+    width: 7.5px;
+    height: 7.5px;
+  }
+}

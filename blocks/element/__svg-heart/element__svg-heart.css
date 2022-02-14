@@ -1,0 +1,12 @@
+.element__svg-heart {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../image/Vector-heart.svg);
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+}
+
+.element__svg-heart:hover {
+  opacity: 0.8;
+}
