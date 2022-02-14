@@ -2,6 +2,7 @@
   width: 142px;
   height: 33px;
   background-image: url(../../../image/Vector.svg);
+  background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
   left: 0;
