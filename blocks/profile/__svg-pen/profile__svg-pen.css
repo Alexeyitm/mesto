@@ -2,6 +2,7 @@
   width: 10px;
   height: 10px;
   background-image: url(../../../image/Vector-pen.svg);
+  background-repeat: no-repeat;
   background-size: contain;
   margin: 0 auto;
   align-self: center;
