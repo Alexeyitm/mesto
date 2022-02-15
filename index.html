@@ -10,6 +10,7 @@
   <title>Mesto</title>
 </head>
 <body class="page">
+  
   <div class="content">
 
     <header class="header">
@@ -80,6 +81,20 @@
     <footer class="footer">
       <div class="footer__copyright">&copy; 2020 Mesto Russia</div>
     </footer>
+
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <a class="popup__button-close">
+          <div class="popup__svg-close"></div>
+        </a>
+        <div class="popup__content">
+          <div class="popup__title"></div>
+          <input type="text" placeholder="Название" class="popup__text">
+          <input type="text" placeholder="Название" class="popup__text">
+          <a class="popup__button-add">Сохранить</a>
+        </div>
+      </div>
+    </div>
 
   </div>
   <script src="./script.js"></script>
