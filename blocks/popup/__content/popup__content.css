@@ -1,0 +1,7 @@
+.popup__content {
+  width: 358px;
+  height: 259px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+}
