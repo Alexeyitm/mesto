@@ -25,6 +25,7 @@
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__figcaption/element__figcaption.css);
 @import url(../blocks/element/__svg-heart/element__svg-heart.css);
+@import url(../blocks/element/__svg-heart/_hover/element__svg-heart_hover.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
