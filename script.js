@@ -31,10 +31,6 @@ for (let buttonHeart of buttonHearts) {
   });
 }
 
-console.log(name)
-console.log(text)
-
-
 
 
 
