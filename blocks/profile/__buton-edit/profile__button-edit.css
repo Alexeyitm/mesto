@@ -5,10 +5,11 @@
   box-sizing: border-box;
   align-self: flex-end;
   display: flex;
+  cursor: pointer;
 }
 
 .profile__button-edit:hover {
-  opacity: 0.6;
+  opacity: .6;
 }
 
 @media screen and (max-width: 767px) {

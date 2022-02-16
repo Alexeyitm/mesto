@@ -10,4 +10,9 @@
   justify-content: center;
   margin-top: auto;
   margin-bottom: 0;
+  cursor: pointer;
+}
+
+.popup__button-add:hover {
+  opacity: .8;
 }
