@@ -4,7 +4,7 @@
   font-weight: normal;
   color: #000000;
   line-height: 17px;
-  margin-top: 32px;
+  margin-top: 30px;
   height: 14px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -13,5 +13,11 @@
 }
 
 .popup__input:nth-child(2n) {
-  margin-top: 50px;
+  margin-top: 54px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1280px) {
+  .popup__input:nth-child(2n) {
+    margin-top: calc(75px + (54 - 75) * (100vw - 320px) / (1280 - 320));
+  }
 }
