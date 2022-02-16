@@ -1,9 +1,9 @@
 .popup__content {
   width: 358px;
   height: 259px;
+  margin-top: 34px;
   display: flex;
   flex-direction: column;
-  margin-top: 34px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 1280px) {

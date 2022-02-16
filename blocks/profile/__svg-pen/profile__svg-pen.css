@@ -1,11 +1,11 @@
 .profile__svg-pen {
   width: 10px;
   height: 10px;
+  margin: 0 auto;
+  align-self: center;
   background-image: url(../../../image/Vector-pen.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  margin: 0 auto;
-  align-self: center;
 }
 
 @media screen and (max-width: 767px) {

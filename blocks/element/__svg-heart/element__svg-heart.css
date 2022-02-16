@@ -1,9 +1,9 @@
 .element__svg-heart {
   width: 22px;
   height: 19px;
-  background-image: url(../../../image/Vector-heart.svg);
-  background-repeat: no-repeat;
   position: absolute;
   right: 20px;
   bottom: 30px;
+  background-image: url(../../../image/Vector-heart.svg);
+  background-repeat: no-repeat;
 }

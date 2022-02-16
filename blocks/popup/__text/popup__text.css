@@ -11,6 +11,6 @@
 @media screen and (min-width: 320px) and (max-width: 1280px) {
   .popup__text {
     font-size: calc(14px + (18 - 14) * (100vw - 320px) / (1280 - 320));
-    line-height: calc(17px + (22 - 17) * (100vw - 320px) / (1280 - 320));;
+    line-height: calc(17px + (22 - 17) * (100vw - 320px) / (1280 - 320));
   }
 }

@@ -1,11 +1,11 @@
 .profile__svg-plus {
   width: 22px;
   height: 22px;
+  margin: 0 auto;
+  align-self: center;
   background-image: url(../../../image/Vector-plus.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  margin: 0 auto;
-  align-self: center;
 }
 
 @media screen and (max-width: 767px) {
