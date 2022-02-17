@@ -5,9 +5,8 @@
   position: absolute;
   right: 20px;
   bottom: 30px;
-  background-image: url(../../../image/Vector-heart.svg);
+  background: url(../../../image/Vector-heart.svg) no-repeat;
   background-size: cover;
-  background-repeat: no-repeat;
   border: 0;
   background-color: #FFFFFF;
 }

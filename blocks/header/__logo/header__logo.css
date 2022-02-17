@@ -4,8 +4,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  background-image: url(../../../image/Vector.svg);
-  background-repeat: no-repeat;
+  background: url(../../../image/Vector.svg) no-repeat;
   background-size: contain;
 }
 
