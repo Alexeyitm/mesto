@@ -3,9 +3,11 @@
   height: 50px;
   margin-top: auto;
   margin-bottom: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   background-color: #000000;
+  border: 0;
   border-radius: 2px;
   text-align: center;
   line-height: 14px;
