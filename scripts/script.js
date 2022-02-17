@@ -8,11 +8,11 @@ let inputs = document.querySelectorAll('.popup__input');
 let popup = document.querySelector('.popup');
 
 buttonEdit.addEventListener('click', function () {
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
 });
 
 buttonClose.addEventListener('click', function () {
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opened');
 });
 
 buttonAdd.addEventListener('click', function () {
@@ -21,13 +21,13 @@ buttonAdd.addEventListener('click', function () {
   const inputs = document.querySelectorAll('.popup__input');
   name.textContent = inputs[0].value;
   text.textContent = inputs[1].value;
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opened');
 });
 
 for (let buttonHeart of buttonHearts) {
   buttonHeart.addEventListener('click', function () {
-    buttonHeart.setAttribute('style','background-image: url(./image/Vector-heart-black.svg);')
-    buttonHeart.classList.remove('element__svg-heart_hover')
+    buttonHeart.setAttribute('style','background-image: url(./image/Vector-heart-black.svg);');
+    buttonHeart.classList.remove('element__svg-heart_hover');
   });
 }
 
