@@ -1,9 +1,6 @@
 .header__logo {
   width: 142px;
   height: 33px;
-  position: absolute;
-  left: 0;
-  top: 0;
   background: url(../../../image/Vector.svg) no-repeat;
   background-size: contain;
 }

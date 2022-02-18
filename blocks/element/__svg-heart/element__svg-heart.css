@@ -1,10 +1,8 @@
 .element__svg-heart {
   width: 22px;
   height: 19px;
+  margin: 5px 5px 0 0;
   padding: 0;
-  position: absolute;
-  right: 20px;
-  bottom: 30px;
   background: url(../../../image/Vector-heart.svg) no-repeat;
   background-size: cover;
   border: 0;

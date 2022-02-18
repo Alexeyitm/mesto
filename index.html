@@ -35,37 +35,55 @@
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-              <h2 class="element__figcaption">Карачаевск<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Карачаевск</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-              <h2 class="element__figcaption">Гора Эльбрус<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Гора Эльбрус</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-              <h2 class="element__figcaption">Домбай<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Домбай</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-              <h2 class="element__figcaption">Гора Эльбрус<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Гора Эльбрус</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-              <h2 class="element__figcaption">Домбай<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Домбай</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
           <li class="element">
             <article class="element__card">
               <img class="element__img" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия">
-              <h2 class="element__figcaption">Карачаево-Черкессия<button class="element__svg-heart element__svg-heart_hover" type="button"></button></h2>
+              <div class="element__description">
+                <h2 class="element__figcaption">Карачаево-Черкессия</h2>
+                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              </div>
             </article>
           </li>
         </ul>
@@ -77,14 +95,16 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__input" type="text">
-          <input class="popup__input" type="text">
-          <button class="popup__button-add" type="button"><span class="popup__text">Сохранить</span></button>
+          <form class="popup__form" name="Form">
+            <input class="popup__input popup__input-name" type="text" name="Name">
+            <input class="popup__input popup__input-job" type="text" name="Job">
+            <button class="popup__button-add" type="submit">Сохранить</button>
+          </form>
         </div>
       </div>
     </div>
