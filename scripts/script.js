@@ -10,6 +10,8 @@ let nameInput = document.querySelector('.popup__input-name');
 let jobInput = document.querySelector('.popup__input-job');
 let formElement = document.querySelector('.popup__form');
 
+console.log(heartsButton)
+
 // open popup
 editButton.addEventListener('click', function () {
   popupElement.classList.add('popup_opened');
@@ -23,17 +25,20 @@ closeButton.addEventListener('click', function () {
 });
 
 // change name and text
-formElement.addEventListener('submit', function formSubmitHandler (evt) {
+function formSubmitHandler (evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
   textElement.textContent = jobInput.value;
-});
+  popupElement.classList.remove('popup_opened');
+};
+
+formElement.addEventListener('submit', formSubmitHandler)
 
 // add "likes"
-for (let heartButton of heartsButton) {
-  heartsButton.addEventListener('click', function () {
-    heartsButton.setAttribute('style', 'background-image: url(./image/Vector-heart-black.svg);');
-    heartsButton.classList.remove('element__svg-heart_hover');
+for (let heart of heartsButton) {
+  heart.addEventListener('click', function () {
+    heart.setAttribute('style', 'background-image: url(./image/Vector-heart-black.svg)');
+    heart.classList.remove('element__svg-heart_hover');
   });
 }
 
