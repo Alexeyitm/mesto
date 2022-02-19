@@ -10,8 +10,6 @@ let nameInput = document.querySelector('.popup__input-name');
 let jobInput = document.querySelector('.popup__input-job');
 let formElement = document.querySelector('.popup__form');
 
-console.log(formElement)
-
 // open popup
 editButton.addEventListener('click', function () {
   popupElement.classList.add('popup_opened');
