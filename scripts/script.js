@@ -43,4 +43,3 @@ for (let heart of heartsButton) {
 
 
 
-
