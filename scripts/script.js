@@ -35,8 +35,7 @@ formElement.addEventListener('submit', formSubmitHandler)
 // add "likes"
 for (let heart of heartsButton) {
   heart.addEventListener('click', function () {
-    heart.setAttribute('style', 'background-image: url(./image/Vector-heart-black.svg)');
-    heart.classList.remove('element__svg-heart_hover');
+    heart.classList.toggle('element__svg-heart_active');
   });
 }
 
