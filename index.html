@@ -31,68 +31,7 @@
       </section>
 
       <section class="elements">
-        <ul class="elements__list">
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-              <div class="element__description">
-                <h2 class="element__figcaption">Карачаевск</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-              <div class="element__description">
-                <h2 class="element__figcaption">Гора Эльбрус</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-              <div class="element__description">
-                <h2 class="element__figcaption">Домбай</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-              <div class="element__description">
-                <h2 class="element__figcaption">Гора Эльбрус</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-              <div class="element__description">
-                <h2 class="element__figcaption">Домбай</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-          <li class="element">
-            <article class="element__card">
-              <button class="element__button-delete" type="button"></button>
-              <img class="element__img" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия">
-              <div class="element__description">
-                <h2 class="element__figcaption">Карачаево-Черкессия</h2>
-                <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
-              </div>
-            </article>
-          </li>
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
       
     </main>
@@ -106,7 +45,7 @@
         <button class="popup__button-close" type="button"></button>
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="Form">
+          <form class="popup__form popup__form_add" name="Form">
             <input class="popup__input popup__input_field_name" type="text" name="Name">
             <input class="popup__input popup__input_field_job" type="text" name="Job">
             <button class="popup__button-add" type="submit">Сохранить</button>
@@ -114,6 +53,19 @@
         </div>
       </div>
     </div>
+
+    <template class="element-template">
+      <li class="element">
+        <article class="element__card">
+          <button class="element__button-delete" type="button"></button>
+          <img class="element__img">
+          <div class="element__description">
+            <h2 class="element__figcaption"></h2>
+            <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+          </div>
+        </article>
+      </li>
+  </template>
 
   </div>
   <script src="./scripts/script.js"></script>
