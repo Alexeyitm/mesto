@@ -1,16 +1,8 @@
-// select buttons, elements, inputs and form
-let popupElement = document.querySelector('.popup');
-let nameElement = document.querySelector('.profile__name');
-let textElement = document.querySelector('.profile__text');
-let nameInput = document.querySelector('.popup__input_field_name');
-let jobInput = document.querySelector('.popup__input_field_job');
-let formElement = document.querySelector('.popup__form');
-
-
 // open and close popup-edit
 const editButton = document.querySelector('.profile__button-edit');
 const closeButton = document.querySelector('.popup__button-close');
 const popupTitle = document.querySelector('.popup__title');
+const popupElement = document.querySelector('.popup');
 
 editButton.addEventListener('click', function () {
   popupElement.classList.add('popup_opened');
@@ -24,13 +16,19 @@ closeButton.addEventListener('click', function () {
 
 
 // change name and text
-function formSubmitHandler (evt) {
+const nameElement = document.querySelector('.profile__name');
+const textElement = document.querySelector('.profile__text');
+const nameInput = document.querySelector('.popup__input_field_name');
+const jobInput = document.querySelector('.popup__input_field_job');
+const formElement = document.querySelector('.popup__form');
+
+const formSubmitHandler = (evt) => {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
   textElement.textContent = jobInput.value;
   popupElement.classList.remove('popup_opened');
 };
-formElement.addEventListener('submit', formSubmitHandler)
+formElement.addEventListener('submit', formSubmitHandler);
 
 
 // create, open and close popup-add
@@ -80,29 +78,61 @@ const initialCards = [
 
 
 // create cards
-const createCards = () => {
-  const cardTemplate = document.querySelector('.element-template').content;
-  const cardList = document.querySelector('.elements__list');
+const cardTemplate = document.querySelector('.element-template').content;
+const cardList = document.querySelector('.elements__list');
 
-  for (let i = 0; i < initialCards.length; i++) {
+const createCards = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
     cardElement.querySelector('.element__img').src = initialCards[i].link;
     cardElement.querySelector('.element__img').alt = initialCards[i].name;
     cardElement.querySelector('.element__figcaption').textContent = initialCards[i].name;
-    cardList.append(cardElement); 
+    cardList.append(cardElement);
   }
 }
-createCards()
+createCards(initialCards);
+
+
+//add new card
+const formSubmitHandlerAdd = (evt) => {
+  evt.preventDefault();
+  initialCards.push({name: popupAddElement.querySelector('.popup__input_field_name').value, link: popupAddElement.querySelector('.popup__input_field_job').value});
+
+  const newCardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  newCardElement.querySelector('.element__img').src = initialCards[initialCards.length - 1].link;
+  newCardElement.querySelector('.element__img').alt = initialCards[initialCards.length - 1].name;
+  newCardElement.querySelector('.element__figcaption').textContent = initialCards[initialCards.length - 1].name;
+  cardList.prepend(newCardElement);
+  popupAddElement.classList.remove('popup_opened');
+
+  //add "like" for new card
+  newCardElement.querySelector('.element__svg-heart').addEventListener('click', function () {
+    newCardElement.querySelector('.element__svg-heart').classList.toggle('element__svg-heart_active');
+  });
+  //add "delete" for new card
+  newCardElement.querySelector('.element__button-delete').addEventListener('click', function () {
+    newCardElement.querySelector('.element__button-delete').closest('.element').remove();
+  });
+};
+popupAddElement.querySelector('.popup__form').addEventListener('submit', formSubmitHandlerAdd);
 
 
 // add "likes"
-let heartsButton = document.querySelectorAll('.element__svg-heart');
+const heartsButton = document.querySelectorAll('.element__svg-heart');
 for (let heart of heartsButton) {
   heart.addEventListener('click', function () {
-    heart.classList.toggle('element__svg-heart_active');
+  heart.classList.toggle('element__svg-heart_active');
   });
-}
+};
 
+
+// delete card
+const deleteButton = document.querySelectorAll('.element__button-delete');
+for (let item of deleteButton) {
+  item.addEventListener('click', function () {
+  item.closest('.element').remove()
+  }); 
+};
 
 
 
