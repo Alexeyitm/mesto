@@ -1,5 +1,8 @@
 .popup-img {
-  display: none;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
   width: 100%;
   height: 100%;
   position: absolute;
