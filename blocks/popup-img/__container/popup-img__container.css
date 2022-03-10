@@ -1,9 +1,10 @@
 .popup-img__container {
+  max-width: 75vw;
+  max-height: 75vh;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform:translate(-50%, -50%);
-  background-color: #FFFFFF;
-  border-radius: 10px;
+  transform: translate(-55%, -55%);
+  background-color: transparent;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, .15);
 }
