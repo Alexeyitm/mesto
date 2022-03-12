@@ -3,7 +3,6 @@
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
-const allPopups = document.querySelectorAll('.popup');
 
 // buttons
 const buttonEdit = document.querySelector('.profile__button-edit');
@@ -22,6 +21,8 @@ const jobInput = document.querySelector('.popup__input_field_job');
 const placeInput = document.querySelector('.popup__input_field_place');
 const linkInput = document.querySelector('.popup__input_field_link');
 const cardList = document.querySelector('.elements__list');
+const picturePopup = document.querySelector('.popup__picture');
+const figcaptionPopup = document.querySelector('.popup__figcaption');
 
 
 
@@ -51,10 +52,12 @@ const createCard = (place, link) => {
   // clone card
   const cardTemplate = document.querySelector('.element-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const cardElementImg = cardElement.querySelector('.element__img');
+  const cardElementFigcaption = cardElement.querySelector('.element__figcaption');
   // add content
-  cardElement.querySelector('.element__img').src = link;
-  cardElement.querySelector('.element__img').alt = place;
-  cardElement.querySelector('.element__figcaption').textContent = place;
+  cardElementImg.src = link;
+  cardElementImg.alt = place;
+  cardElementFigcaption.textContent = place;
   // add like
   const heartButton = cardElement.querySelector('.element__svg-heart');
   heartButton.addEventListener('click', function () {
@@ -68,9 +71,9 @@ const createCard = (place, link) => {
   // open picture
   const openPicture = cardElement.querySelector('.element__img');
   openPicture.addEventListener('click', function () {
-    popupImage.querySelector('.popup__picture').src = cardElement.querySelector('.element__img').src;
-    popupImage.querySelector('.popup__picture').alt = cardElement.querySelector('.element__img').alt;
-    popupImage.querySelector('.popup__figcaption').textContent = cardElement.querySelector('.element__img').alt;
+    picturePopup.src = link;
+    picturePopup.alt = place;
+    figcaptionPopup.textContent = place;
     openPopup(popupImage);
   });
 
