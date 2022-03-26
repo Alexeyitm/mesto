@@ -4,7 +4,7 @@ const enanleValidation = (obj) => {
 
   formEdit.addEventListener('input', handleFormInput);
   formAdd.addEventListener('input', handleFormInput);
-}
+};
 
 
 const handleFormInput = (evt) => {
@@ -14,7 +14,7 @@ const handleFormInput = (evt) => {
   setCustomError(input);
   setFieldError(input);
   setSubmitButtonState(form);
-}
+};
 
 const setCustomError = (input) => {
   const validity = input.validity;
@@ -26,24 +26,24 @@ const setCustomError = (input) => {
   if (currentLength == 0) {
     input.setCustomValidity('Вы пропустили это поле.');
     input.classList.add('popup__input_invalid');
-  }
+  };
 
   if (validity.tooShort || validity.tooLong) {
     const min = input.getAttribute('minlength');
     input.setCustomValidity(`Минимальное количество символов: ${min}. Длина текста сейчас: ${currentLength} символ.`);
     input.classList.add('popup__input_invalid');
-  }
+  };
 
   if (validity.typeMismatch) {
     input.setCustomValidity(`Введите адрес сайта`);
     input.classList.add('popup__input_invalid');
-  }
-}
+  };
+};
 
 const setFieldError = (input) => {
   const span = document.querySelector(`#${input.id}-error`);
   span.textContent = input.validationMessage;
-}
+};
 
 const setSubmitButtonState = (form) => {
   const button = form.querySelector('.popup__button-add');
@@ -58,8 +58,8 @@ const setSubmitButtonState = (form) => {
     button.classList.add('popup__button-add_invalid');
     button.classList.remove('popup__button-add_hover');
     button.setAttribute('disabled', 'disabled');
-  }
-}
+  };
+};
 
 
 enanleValidation({

@@ -13,7 +13,7 @@ const buttonAdd = document.querySelector('.profile__button-add');
 const buttonCloseUser = popupUser.querySelector('.popup__button-close');
 const buttonCloseCard = popupCard.querySelector('.popup__button-close');
 const buttonClosePicture = popupImage.querySelector('.popup__button-close');
-const buttonAddCard = popupCard.querySelector('.popup__button-add_card')
+const buttonAddCard = popupCard.querySelector('.popup__button-add_card');
 
 //inputs and elements
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -54,8 +54,8 @@ const closeByEsc = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup); 
-  }
-}  
+  };
+};
 
 // toggle like
 const toggleLike = (heart) => {
