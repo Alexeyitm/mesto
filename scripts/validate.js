@@ -1,4 +1,4 @@
-function enanleValidation(obj) {
+const enanleValidation = (obj) => {
   const formEdit = document.querySelector(obj.formEdit);
   const formAdd = document.querySelector(obj.formAdd);
 
@@ -7,7 +7,7 @@ function enanleValidation(obj) {
 }
 
 
-function handleFormInput(evt) {
+const handleFormInput = (evt) => {
   const form = evt.currentTarget;
   const input = evt.target;
 
@@ -16,7 +16,7 @@ function handleFormInput(evt) {
   setSubmitButtonState(form);
 }
 
-function setCustomError(input) {
+const setCustomError = (input) => {
   const validity = input.validity;
   const currentLength = input.value.length;
 
@@ -40,12 +40,12 @@ function setCustomError(input) {
   }
 }
 
-function setFieldError(input) {
+const setFieldError = (input) => {
   const span = document.querySelector(`#${input.id}-error`);
   span.textContent = input.validationMessage;
 }
 
-function setSubmitButtonState(form) {
+const setSubmitButtonState = (form) => {
   const button = form.querySelector('.popup__button-add');
   isValid = form.checkValidity();
 

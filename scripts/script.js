@@ -24,7 +24,7 @@ const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_job');
 const placeInput = document.querySelector('.popup__input_field_place');
 const linkInput = document.querySelector('.popup__input_field_link');
-const cardList = document.querySelector('.elements__list');
+const cardsContainer = document.querySelector('.elements__list');
 const picturePopup = document.querySelector('.popup__picture');
 const figcaptionPopup = document.querySelector('.popup__figcaption');
 const popupList = document.querySelectorAll('.popup');
@@ -34,11 +34,13 @@ const popupList = document.querySelectorAll('.popup');
 // functions
 // open popup
 const openPopup = (element) => {
+  document.addEventListener('keydown', closeByEsc);
   element.classList.add('popup_opened');
 };
 
 // close popup
 const closePopup = (element) => {
+  document.removeEventListener('keydown', closeByEsc);
   element.classList.remove('popup_opened');
 };
 
@@ -46,6 +48,14 @@ const closePopup = (element) => {
 const pressOverlay = (popup) => {
   closePopup(popup);
 };
+
+// press Esc
+const closeByEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
+  }
+}  
 
 // toggle like
 const toggleLike = (heart) => {
@@ -73,7 +83,7 @@ const createCard = (place, link) => {
   heartButton.addEventListener('click', function () {
     toggleLike(heartButton);
   });
-  // add close
+  // add delete
   const deleteButton = cardElement.querySelector('.element__button-delete');
   deleteButton.addEventListener('click', function () {
     deleteCard(deleteButton);
@@ -85,21 +95,6 @@ const createCard = (place, link) => {
     picturePopup.alt = place;
     figcaptionPopup.textContent = place;
     openPopup(popupImage);
-  });
-
-  // picture overlay closure
-  popupImage.addEventListener('click', function () {
-    pressOverlay(popupImage);    
-  });
-  popupFigure.addEventListener('click', function(evt) {
-    evt.stopPropagation();
-  });
-
-  // picture Esc closure
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popupImage);
-    };  
   });
 
   return cardElement;
@@ -117,9 +112,10 @@ const submitPopupEdit = (evt) => {
 const submitPopupCard = (evt) => {
   evt.preventDefault();
   const newCard = createCard(placeInput.value, linkInput.value);
-  cardList.prepend(newCard);
-  formElementAdd.reset();
+  cardsContainer.prepend(newCard);
   closePopup(popupCard);
+  buttonAddCard.classList.remove('popup__button-add_hover');
+  formElementAdd.reset();
 };
 
 
@@ -128,24 +124,16 @@ const submitPopupCard = (evt) => {
 // popupUser open listener
 buttonEdit.addEventListener('click', function () {
   nameInput.value = nameElement.textContent;
-  jobInput.value = textElement.textContent;
-  
-  // popupUser overlay closure
-  popupUser.addEventListener('click', function () {
-    pressOverlay(popupUser);    
-  });
-  popupContainerUser.addEventListener('click', function(evt) {
-    evt.stopPropagation();
-  });
-
-  // popupUser Esc closure
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popupUser);
-    };
-  });
-  
+  jobInput.value = textElement.textContent;  
   openPopup(popupUser);
+});
+
+// popupUser overlay close listener
+popupUser.addEventListener('click', function () {
+  pressOverlay(popupUser);    
+});
+popupContainerUser.addEventListener('click', function(evt) {
+  evt.stopPropagation();
 });
 
 // popupUser close listener
@@ -155,29 +143,30 @@ buttonCloseUser.addEventListener('click', function () {
 
 // popupCard open listener
 buttonAdd.addEventListener('click', function () {
-
-  // popupCard overlay closure
-  popupCard.addEventListener('click', function () {
-    pressOverlay(popupCard);    
-  });
-  popupContainerCard.addEventListener('click', function(evt) {
-    evt.stopPropagation();
-  });
-
-  // popupUser Esc closure
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popupCard);
-    };
-  });
   buttonAddCard.setAttribute('disabled', 'disabled');
   buttonAddCard.classList.add('popup__button-add_invalid');
   openPopup(popupCard);
 });
 
-// popupCard close listeners
+// popupCard overlay close listener
+popupCard.addEventListener('click', function () {
+  pressOverlay(popupCard);    
+});
+popupContainerCard.addEventListener('click', function(evt) {
+  evt.stopPropagation();
+});
+
+// popupCard close listener
 buttonCloseCard.addEventListener('click', function () {
   closePopup(popupCard);
+});
+
+// picture overlay close listener
+popupImage.addEventListener('click', function () {
+  pressOverlay(popupImage);    
+});
+popupFigure.addEventListener('click', function(evt) {
+  evt.stopPropagation();
 });
 
 // picture close listener
@@ -197,5 +186,5 @@ formElementAdd.addEventListener('submit', submitPopupCard);
 // create cards from array initialCards
 for (let i = 0; i < initialCards.length; i++) {
   const elementArr = createCard(initialCards[i].name, initialCards[i].link);
-  cardList.append(elementArr);
+  cardsContainer.append(elementArr);
 };
