@@ -13,6 +13,7 @@ const buttonAdd = document.querySelector('.profile__button-add');
 const buttonCloseUser = popupUser.querySelector('.popup__button-close');
 const buttonCloseCard = popupCard.querySelector('.popup__button-close');
 const buttonClosePicture = popupImage.querySelector('.popup__button-close');
+const buttonAddCard = popupCard.querySelector('.popup__button-add_card')
 
 //inputs and elements
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -90,13 +91,13 @@ const createCard = (place, link) => {
   popupImage.addEventListener('click', function () {
     pressOverlay(popupImage);    
   });
-  popupFigure.addEventListener('click', function(event) {
-    event.stopPropagation();
+  popupFigure.addEventListener('click', function(evt) {
+    evt.stopPropagation();
   });
 
   // picture Esc closure
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
       closePopup(popupImage);
     };  
   });
@@ -118,7 +119,7 @@ const submitPopupCard = (evt) => {
   const newCard = createCard(placeInput.value, linkInput.value);
   cardList.prepend(newCard);
   formElementAdd.reset();
-  closePopup(popupCard); 
+  closePopup(popupCard);
 };
 
 
@@ -133,13 +134,13 @@ buttonEdit.addEventListener('click', function () {
   popupUser.addEventListener('click', function () {
     pressOverlay(popupUser);    
   });
-  popupContainerUser.addEventListener('click', function(event) {
-    event.stopPropagation();
+  popupContainerUser.addEventListener('click', function(evt) {
+    evt.stopPropagation();
   });
 
   // popupUser Esc closure
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
       closePopup(popupUser);
     };
   });
@@ -159,17 +160,18 @@ buttonAdd.addEventListener('click', function () {
   popupCard.addEventListener('click', function () {
     pressOverlay(popupCard);    
   });
-  popupContainerCard.addEventListener('click', function(event) {
-    event.stopPropagation();
+  popupContainerCard.addEventListener('click', function(evt) {
+    evt.stopPropagation();
   });
 
   // popupUser Esc closure
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
       closePopup(popupCard);
     };
   });
-
+  buttonAddCard.setAttribute('disabled', 'disabled');
+  buttonAddCard.classList.add('popup__button-add_invalid');
   openPopup(popupCard);
 });
 

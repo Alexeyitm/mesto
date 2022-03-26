@@ -18,10 +18,6 @@
   padding-top: 14px;
 }
 
-.popup__button-add:hover {
-  opacity: .8;
-}
-
 @media screen and (min-width: 320px) and (max-width: 1280px) {
   .popup__button-add {
     height: calc(46px + (50 - 46) * (100vw - 320px) / (1280 - 320));
