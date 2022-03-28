@@ -6,7 +6,6 @@ const enanleValidation = (obj) => {
   formAdd.addEventListener('input', handleFormInput);
 };
 
-
 const handleFormInput = (evt) => {
   const form = evt.currentTarget;
   const input = evt.target;
@@ -20,23 +19,23 @@ const setCustomError = (input) => {
   const currentLength = input.value.length;
 
   input.setCustomValidity('');
-  input.classList.remove('popup__input_invalid');
+  input.classList.remove(setting.inputInvalid);
   setFieldError(input, input.validationMessage);
 
   if (currentLength == 0) {
     setFieldError(input, `Вы пропустили это поле.`);
-    input.classList.add('popup__input_invalid');
+    input.classList.add(setting.inputInvalid);
   };
 
   if (validity.tooShort || validity.tooLong) {
     const min = input.getAttribute('minlength');
     setFieldError(input, `Минимальное количество символов: ${min}. Длина текста сейчас: ${currentLength} символ.`);
-    input.classList.add('popup__input_invalid');
+    input.classList.add(setting.inputInvalid);
   };
 
   if (validity.typeMismatch) {
     setFieldError(input, `Введите адрес сайта`);
-    input.classList.add('popup__input_invalid');
+    input.classList.add(setting.inputInvalid);
   };
 };
 
@@ -46,23 +45,31 @@ const setFieldError = (input, errorMessage) => {
 };
 
 const setSubmitButtonState = (form) => {
-  const button = form.querySelector('.popup__button-add');
+  const button = form.querySelector(setting.buttonAddPopup);
   isValid = form.checkValidity();
 
   if (isValid) {
-    button.classList.remove('popup__button-add_invalid');
-    button.classList.add('popup__button-add_hover');
+    button.classList.remove(setting.buttonAddPopupInvalid);
+    button.classList.add(setting.buttonAddPopupHover);
     button.removeAttribute('disabled');
   }
   else {
-    button.classList.add('popup__button-add_invalid');
-    button.classList.remove('popup__button-add_hover');
+    button.classList.add(setting.buttonAddPopupInvalid);
+    button.classList.remove(setting.buttonAddPopupHover);
     button.setAttribute('disabled', 'disabled');
   };
 };
 
 
-enanleValidation({
+
+const setting = {
   formEdit: '.popup__form_edit',
-  formAdd: '.popup__form_add'
-});
+  formAdd: '.popup__form_add',
+  buttonAddPopup: '.popup__button-add',
+  buttonAddPopupInvalid: 'popup__button-add_invalid',
+  buttonAddPopupHover: 'popup__button-add_hover',
+  inputInvalid: 'popup__input_invalid'
+}
+
+enanleValidation(setting);
+
