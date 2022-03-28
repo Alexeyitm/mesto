@@ -46,9 +46,9 @@
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form popup__form_edit" name="Form" novalidate>
-            <input id="name" class="popup__input popup__input_field_name" type="text" name="Name" minlength="2" maxlength="40">
+            <input id="name" class="popup__input popup__input_field_name" type="text" name="Name" minlength="2" maxlength="40" required>
             <span id="name-error" class="popup__input-error popup__input-error_number_one"></span>
-            <input id="job" class="popup__input popup__input_field_job" type="text" name="Job" minlength="2" maxlength="200">
+            <input id="job" class="popup__input popup__input_field_job" type="text" name="Job" minlength="2" maxlength="200" required>
             <span id="job-error" class="popup__input-error popup__input-error_number_two"></span>
             <button class="popup__button-add popup__button-add_hover" type="submit">Сохранить</button>
           </form>
