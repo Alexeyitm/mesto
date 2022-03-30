@@ -1,39 +1,35 @@
 const enanleValidation = (obj) => {
-  const forms = document.querySelectorAll(obj.form);
+  const formList = Array.from(document.querySelectorAll(obj.form)); 
 
-  forms.forEach((ele) => {
-    ele.addEventListener('input', handleFormInput);
+  formList.forEach((form) => { 
+    setEventListeners(form);
   });
 };
 
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(setting.input));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', handleFormInput);
+  });
+}; 
+
 const handleFormInput = (evt) => {
-  const form = evt.currentTarget;
   const input = evt.target;
+  const form = evt.currentTarget.parentNode;
 
   setCustomError(input);
+  setFieldError(input, input.validationMessage);
   setSubmitButtonState(form);
 };
 
 const setCustomError = (input) => {
-  const validity = input.validity;
-  const currentLength = input.value.length;
-
-  input.setCustomValidity('');
-  input.classList.remove(setting.inputInvalid);
-  setFieldError(input, input.validationMessage);
-
-  if (currentLength == 0) {
+  if (!input.validity.valid) {
     input.classList.add(setting.inputInvalid);
-  };
-
-  if (validity.tooShort || validity.tooLong) {
-    const min = input.getAttribute('minlength');
-    input.classList.add(setting.inputInvalid);
-  };
-
-  if (validity.typeMismatch) {
-    input.classList.add(setting.inputInvalid);
-  };
+  }
+  else {
+    input.classList.remove(setting.inputInvalid);
+  }
 };
 
 const setFieldError = (input, errorMessage) => {
@@ -61,6 +57,7 @@ const setSubmitButtonState = (form) => {
 
 const setting = {
   form: '.popup__form',
+  input: '.popup__input',
   buttonAddPopup: '.popup__button-add',
   buttonAddPopupInvalid: 'popup__button-add_invalid',
   buttonAddPopupHover: 'popup__button-add_hover',
