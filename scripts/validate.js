@@ -1,34 +1,36 @@
 const enanleValidation = (obj) => {
-  const formList = Array.from(document.querySelectorAll(obj.form)); 
+  const formList = Array.from(document.querySelectorAll(obj.form));
 
-  formList.forEach((form) => { 
-    setEventListeners(form);
+  formList.forEach((formElement) => { 
+    setEventListeners(obj, formElement);
   });
 };
 
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(setting.input));
+const setEventListeners = (obj, formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(obj.input));
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', handleFormInput);
+    inputElement.addEventListener('input', () => {
+      handleFormInput(obj, inputElement, formElement);
+    });
   });
 }; 
 
-const handleFormInput = (evt) => {
-  const input = evt.target;
-  const form = evt.currentTarget.parentNode;
+const handleFormInput = (obj, inputElement, formElement) => {
+  const input = inputElement;
+  const form = formElement;
 
-  setCustomError(input);
+  setCustomError(obj, input);
   setFieldError(input, input.validationMessage);
-  setSubmitButtonState(form);
+  setSubmitButtonState(obj, form);
 };
 
-const setCustomError = (input) => {
+const setCustomError = (obj, input) => {
   if (!input.validity.valid) {
-    input.classList.add(setting.inputInvalid);
+    input.classList.add(obj.inputInvalid);
   }
   else {
-    input.classList.remove(setting.inputInvalid);
+    input.classList.remove(obj.inputInvalid);
   }
 };
 
@@ -37,32 +39,30 @@ const setFieldError = (input, errorMessage) => {
   span.textContent = errorMessage;
 };
 
-const setSubmitButtonState = (form) => {
-  const button = form.querySelector(setting.buttonAddPopup);
+const setSubmitButtonState = (obj, form) => {
+  const button = form.querySelector(obj.buttonAddPopup);
   isValid = form.checkValidity();
 
   if (isValid) {
-    button.classList.remove(setting.buttonAddPopupInvalid);
-    button.classList.add(setting.buttonAddPopupHover);
+    button.classList.remove(obj.buttonAddPopupInvalid);
+    button.classList.add(obj.buttonAddPopupHover);
     button.removeAttribute('disabled');
   }
   else {
-    button.classList.add(setting.buttonAddPopupInvalid);
-    button.classList.remove(setting.buttonAddPopupHover);
+    button.classList.add(obj.buttonAddPopupInvalid);
+    button.classList.remove(obj.buttonAddPopupHover);
     button.setAttribute('disabled', 'disabled');
   };
 };
 
+ 
 
-
-const setting = {
+enanleValidation({
   form: '.popup__form',
   input: '.popup__input',
   buttonAddPopup: '.popup__button-add',
   buttonAddPopupInvalid: 'popup__button-add_invalid',
   buttonAddPopupHover: 'popup__button-add_hover',
   inputInvalid: 'popup__input_invalid'
-}
-
-enanleValidation(setting);
+});
 
