@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+//import { FormValidator } from './FormValidator.js';
+
 // select constants
 // popups
 const popupUser = document.querySelector('.popup_user');
@@ -67,10 +70,13 @@ const deleteCard = (del) => {
   del.closest('.element').remove();
 };
 
+
+
+
 // create card
-const createCard = (place, link) => {
+const createCard = (place, link, card) => {
   // clone card
-  const cardTemplate = document.querySelector('.element-template').content;
+  const cardTemplate = document.querySelector(card).content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const cardElementImg = cardElement.querySelector('.element__img');
   const cardElementFigcaption = cardElement.querySelector('.element__figcaption');
@@ -111,8 +117,9 @@ const submitPopupEdit = (evt) => {
 // submitPopupCard
 const submitPopupCard = (evt) => {
   evt.preventDefault();
-  const newCard = createCard(placeInput.value, linkInput.value);
-  cardsContainer.prepend(newCard);
+  const newCard = new Card(placeInput.value, linkInput.value, '.element-template');
+  const cardElement = newCard.generateCard()
+  cardsContainer.prepend(cardElement);
   closePopup(popupCard);
   buttonAddCard.classList.remove('popup__button-add_hover');
   formElementAdd.reset();
@@ -185,6 +192,8 @@ formElementAdd.addEventListener('submit', submitPopupCard);
 // cycles
 // create cards from array initialCards
 for (let i = 0; i < initialCards.length; i++) {
-  const elementArr = createCard(initialCards[i].name, initialCards[i].link);
-  cardsContainer.append(elementArr);
+  const elementArr = new Card(initialCards[i].name, initialCards[i].link, '.element-template');
+  const cardElement = elementArr.generateCard()
+  console.log(cardElement)
+  cardsContainer.append(cardElement);
 };
