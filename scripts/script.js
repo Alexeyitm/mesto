@@ -1,3 +1,4 @@
+import { initialCards } from './contain.js';
 import { Card } from './Card.js';
 //import { FormValidator } from './FormValidator.js';
 
@@ -28,10 +29,6 @@ const jobInput = document.querySelector('.popup__input_field_job');
 const placeInput = document.querySelector('.popup__input_field_place');
 const linkInput = document.querySelector('.popup__input_field_link');
 const cardsContainer = document.querySelector('.elements__list');
-const picturePopup = document.querySelector('.popup__picture');
-const figcaptionPopup = document.querySelector('.popup__figcaption');
-const popupList = document.querySelectorAll('.popup');
-
 
 
 // functions
@@ -70,42 +67,6 @@ const deleteCard = (del) => {
   del.closest('.element').remove();
 };
 
-
-
-
-// create card
-const createCard = (place, link, card) => {
-  // clone card
-  const cardTemplate = document.querySelector(card).content;
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardElementImg = cardElement.querySelector('.element__img');
-  const cardElementFigcaption = cardElement.querySelector('.element__figcaption');
-  // add content
-  cardElementImg.src = link;
-  cardElementImg.alt = place;
-  cardElementFigcaption.textContent = place;
-  // add like
-  const heartButton = cardElement.querySelector('.element__svg-heart');
-  heartButton.addEventListener('click', function () {
-    toggleLike(heartButton);
-  });
-  // add delete
-  const deleteButton = cardElement.querySelector('.element__button-delete');
-  deleteButton.addEventListener('click', function () {
-    deleteCard(deleteButton);
-  });
-  // open picture
-  const openPicture = cardElement.querySelector('.element__img');
-  openPicture.addEventListener('click', function () {
-    picturePopup.src = link;
-    picturePopup.alt = place;
-    figcaptionPopup.textContent = place;
-    openPopup(popupImage);
-  });
-
-  return cardElement;
-};
-
 // submitPopupEdit
 const submitPopupEdit = (evt) => {
   evt.preventDefault();
@@ -117,14 +78,13 @@ const submitPopupEdit = (evt) => {
 // submitPopupCard
 const submitPopupCard = (evt) => {
   evt.preventDefault();
-  const newCard = new Card(placeInput.value, linkInput.value, '.element-template');
+  const newCard = new Card(placeInput.value, linkInput.value, '.element-template', toggleLike, deleteCard, openPopup);
   const cardElement = newCard.generateCard()
   cardsContainer.prepend(cardElement);
   closePopup(popupCard);
   buttonAddCard.classList.remove('popup__button-add_hover');
   formElementAdd.reset();
 };
-
 
 
 // listeners
@@ -188,12 +148,10 @@ formElementEdit.addEventListener('submit', submitPopupEdit);
 formElementAdd.addEventListener('submit', submitPopupCard);
 
 
-
 // cycles
 // create cards from array initialCards
 for (let i = 0; i < initialCards.length; i++) {
-  const elementArr = new Card(initialCards[i].name, initialCards[i].link, '.element-template');
+  const elementArr = new Card(initialCards[i].name, initialCards[i].link, '.element-template', toggleLike, deleteCard, openPopup);
   const cardElement = elementArr.generateCard()
-  console.log(cardElement)
   cardsContainer.append(cardElement);
 };
