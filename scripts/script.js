@@ -1,6 +1,6 @@
-import { initialCards } from './contain.js';
+import { initialCards, validateSetting } from './contain.js';
 import { Card } from './Card.js';
-//import { FormValidator } from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
 
 // select constants
 // popups
@@ -29,7 +29,7 @@ const jobInput = document.querySelector('.popup__input_field_job');
 const placeInput = document.querySelector('.popup__input_field_place');
 const linkInput = document.querySelector('.popup__input_field_link');
 const cardsContainer = document.querySelector('.elements__list');
-
+const formList = document.querySelectorAll('.popup__form');
 
 // functions
 // open popup
@@ -155,3 +155,9 @@ for (let i = 0; i < initialCards.length; i++) {
   const cardElement = elementArr.generateCard()
   cardsContainer.append(cardElement);
 };
+
+//validate cards
+Array.from(formList).forEach((formElement) => { 
+  const form = new FormValidator(validateSetting, formElement);
+  form.enableValidation();
+});

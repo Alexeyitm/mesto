@@ -39,8 +39,8 @@ export class Card {
 
   generateCard() {
     this._element = this._cardElement;
-    this._element = this._addContent();
-    this._element = this._setEventListeners();
+    this._addContent();
+    this._setEventListeners();
   
     return this._element;
   };
