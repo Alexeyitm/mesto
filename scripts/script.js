@@ -31,6 +31,9 @@ const linkInput = document.querySelector('.popup__input_field_link');
 const cardsContainer = document.querySelector('.elements__list');
 const formList = document.querySelectorAll('.popup__form');
 
+const formEdit = new FormValidator(validateSetting, formElementEdit);
+const formAdd = new FormValidator(validateSetting, formElementAdd);
+
 // functions
 // open popup
 const openPopup = (element) => {
@@ -41,7 +44,7 @@ const openPopup = (element) => {
 // close popup
 const closePopup = (element) => {
   document.removeEventListener('keydown', closeByEsc);
-  element.classList.remove('popup_opened');
+  element.classList.remove('popup_opened'); 
 };
 
 // press overlay
@@ -57,16 +60,6 @@ const closeByEsc = (evt) => {
   };
 };
 
-// toggle like
-const toggleLike = (heart) => {
-  heart.classList.toggle('element__svg-heart_active');
-};
-
-// delete card
-const deleteCard = (del) => {
-  del.closest('.element').remove();
-};
-
 // submitPopupEdit
 const submitPopupEdit = (evt) => {
   evt.preventDefault();
@@ -78,66 +71,71 @@ const submitPopupEdit = (evt) => {
 // submitPopupCard
 const submitPopupCard = (evt) => {
   evt.preventDefault();
-  const newCard = new Card(placeInput.value, linkInput.value, '.element-template', toggleLike, deleteCard, openPopup);
-  const cardElement = newCard.generateCard()
-  cardsContainer.prepend(cardElement);
+  const CardElement = initialCard(placeInput.value, linkInput.value, '.element-template', openPopup);
+  cardsContainer.prepend(CardElement);
   closePopup(popupCard);
-  buttonAddCard.classList.remove('popup__button-add_hover');
   formElementAdd.reset();
+  formAdd.setSubmitButtonStateDisabled();
 };
 
+// initialCard
+const initialCard = (firstInputValue, secondInputValue, classTemplate, openPopup) => {
+  const newCard = new Card(firstInputValue, secondInputValue, classTemplate, openPopup).generateCard();
+  return newCard;
+};
 
 // listeners
 // popupUser open listener
-buttonEdit.addEventListener('click', function () {
+buttonEdit.addEventListener('click', () => {
   nameInput.value = nameElement.textContent;
   jobInput.value = textElement.textContent;  
   openPopup(popupUser);
+  formEdit.resetErrors();
 });
 
 // popupUser overlay close listener
-popupUser.addEventListener('click', function () {
+popupUser.addEventListener('click', () => {
   pressOverlay(popupUser);    
 });
-popupContainerUser.addEventListener('click', function(evt) {
+popupContainerUser.addEventListener('click', (evt) => {
   evt.stopPropagation();
 });
 
 // popupUser close listener
-buttonCloseUser.addEventListener('click', function () {
+buttonCloseUser.addEventListener('click', () => {
   closePopup(popupUser);
 });
 
 // popupCard open listener
-buttonAdd.addEventListener('click', function () {
-  buttonAddCard.setAttribute('disabled', 'disabled');
-  buttonAddCard.classList.add('popup__button-add_invalid');
+buttonAdd.addEventListener('click', () => {
+  formAdd.setSubmitButtonStateDisabled();
   openPopup(popupCard);
+  formAdd.resetErrors();
 });
 
 // popupCard overlay close listener
-popupCard.addEventListener('click', function () {
+popupCard.addEventListener('click', () => {
   pressOverlay(popupCard);    
 });
-popupContainerCard.addEventListener('click', function(evt) {
+popupContainerCard.addEventListener('click', (evt) => {
   evt.stopPropagation();
 });
 
 // popupCard close listener
-buttonCloseCard.addEventListener('click', function () {
+buttonCloseCard.addEventListener('click', () => {
   closePopup(popupCard);
 });
 
 // picture overlay close listener
-popupImage.addEventListener('click', function () {
+popupImage.addEventListener('click', () => {
   pressOverlay(popupImage);    
 });
-popupFigure.addEventListener('click', function(evt) {
+popupFigure.addEventListener('click', (evt) => {
   evt.stopPropagation();
 });
 
 // picture close listener
-buttonClosePicture.addEventListener('click', function () {
+buttonClosePicture.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
@@ -151,13 +149,12 @@ formElementAdd.addEventListener('submit', submitPopupCard);
 // cycles
 // create cards from array initialCards
 for (let i = 0; i < initialCards.length; i++) {
-  const elementArr = new Card(initialCards[i].name, initialCards[i].link, '.element-template', toggleLike, deleteCard, openPopup);
-  const cardElement = elementArr.generateCard()
-  cardsContainer.append(cardElement);
+  const CardElement = initialCard(initialCards[i].name, initialCards[i].link, '.element-template', openPopup);
+  cardsContainer.append(CardElement);
 };
 
 //validate cards
-Array.from(formList).forEach((formElement) => { 
+Array.from(formList).forEach((formElement) => {
   const form = new FormValidator(validateSetting, formElement);
   form.enableValidation();
 });
