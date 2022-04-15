@@ -17,7 +17,6 @@ const buttonAdd = document.querySelector('.profile__button-add');
 const buttonCloseUser = popupUser.querySelector('.popup__button-close');
 const buttonCloseCard = popupCard.querySelector('.popup__button-close');
 const buttonClosePicture = popupImage.querySelector('.popup__button-close');
-const buttonAddCard = popupCard.querySelector('.popup__button-add_card');
 
 //inputs and elements
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -29,7 +28,6 @@ const jobInput = document.querySelector('.popup__input_field_job');
 const placeInput = document.querySelector('.popup__input_field_place');
 const linkInput = document.querySelector('.popup__input_field_link');
 const cardsContainer = document.querySelector('.elements__list');
-const formList = document.querySelectorAll('.popup__form');
 
 const formEdit = new FormValidator(validateSetting, formElementEdit);
 const formAdd = new FormValidator(validateSetting, formElementAdd);
@@ -146,7 +144,7 @@ formElementEdit.addEventListener('submit', submitPopupEdit);
 formElementAdd.addEventListener('submit', submitPopupCard);
 
 
-// cycles
+
 // create cards from array initialCards
 for (let i = 0; i < initialCards.length; i++) {
   const CardElement = initialCard(initialCards[i].name, initialCards[i].link, '.element-template', openPopup);
@@ -154,7 +152,5 @@ for (let i = 0; i < initialCards.length; i++) {
 };
 
 //validate cards
-Array.from(formList).forEach((formElement) => {
-  const form = new FormValidator(validateSetting, formElement);
-  form.enableValidation();
-});
+formEdit.enableValidation();
+formAdd.enableValidation();
