@@ -1,40 +1,19 @@
-import { initialCards, validateSetting } from './contain.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { initialCards, validateSetting, popupUser, popupCard, popupImage, popupContainerUser, popupContainerCard, popupFigure,
+  buttonEdit, buttonAdd, buttonCloseUser, buttonCloseCard, buttonClosePicture,
+  formElementEdit, formElementAdd, nameElement, textElement, nameInput, jobInput, placeInput, linkInput, cardsContainer
+ } from './utils/constants.js';
+import { Card } from './components/Card.js';
+import { FormValidator } from './components/FormValidator.js';
+import { Section } from './components/Section.js';
 
-// select constants
-// popups
-const popupUser = document.querySelector('.popup_user');
-const popupCard = document.querySelector('.popup_card');
-const popupImage = document.querySelector('.popup_image');
-const popupContainerUser = document.querySelector('.popup__container_user');
-const popupContainerCard = document.querySelector('.popup__container_card');
-const popupFigure = document.querySelector('.popup__figure');
-
-// buttons
-const buttonEdit = document.querySelector('.profile__button-edit');
-const buttonAdd = document.querySelector('.profile__button-add');
-const buttonCloseUser = popupUser.querySelector('.popup__button-close');
-const buttonCloseCard = popupCard.querySelector('.popup__button-close');
-const buttonClosePicture = popupImage.querySelector('.popup__button-close');
-
-//inputs and elements
-const formElementEdit = document.querySelector('.popup__form_edit');
-const formElementAdd = document.querySelector('.popup__form_add');
-const nameElement = document.querySelector('.profile__name');
-const textElement = document.querySelector('.profile__text');
-const nameInput = document.querySelector('.popup__input_field_name');
-const jobInput = document.querySelector('.popup__input_field_job');
-const placeInput = document.querySelector('.popup__input_field_place');
-const linkInput = document.querySelector('.popup__input_field_link');
-const cardsContainer = document.querySelector('.elements__list');
+import { renderer } from './utils/utils.js';
 
 const formEdit = new FormValidator(validateSetting, formElementEdit);
 const formAdd = new FormValidator(validateSetting, formElementAdd);
 
 // functions
 // open popup
-const openPopup = (element) => {
+export const openPopup = (element) => {
   document.addEventListener('keydown', closeByEsc);
   element.classList.add('popup_opened');
 };
@@ -69,17 +48,12 @@ const submitPopupEdit = (evt) => {
 // submitPopupCard
 const submitPopupCard = (evt) => {
   evt.preventDefault();
-  const CardElement = initialCard(placeInput.value, linkInput.value, '.element-template', openPopup);
-  cardsContainer.prepend(CardElement);
+  const values = {name: placeInput.value, link: linkInput.value};
+  const card = new Section({initialCards: values, renderer}, '.elements__list').renderList();
+  cardsContainer.prepend(card)
   closePopup(popupCard);
   formElementAdd.reset();
   formAdd.setSubmitButtonStateDisabled();
-};
-
-// initialCard
-const initialCard = (firstInputValue, secondInputValue, classTemplate, openPopup) => {
-  const newCard = new Card(firstInputValue, secondInputValue, classTemplate, openPopup).generateCard();
-  return newCard;
 };
 
 // listeners
@@ -143,14 +117,12 @@ formElementEdit.addEventListener('submit', submitPopupEdit);
 // submit form PopupCard listener
 formElementAdd.addEventListener('submit', submitPopupCard);
 
-
-
-// create cards from array initialCards
-for (let i = 0; i < initialCards.length; i++) {
-  const CardElement = initialCard(initialCards[i].name, initialCards[i].link, '.element-template', openPopup);
-  cardsContainer.append(CardElement);
-};
-
-//validate cards
+// validate cards
 formEdit.enableValidation();
 formAdd.enableValidation();
+
+
+// add start cards
+for (let i = 0; i < initialCards.length; i++) {
+  const card = new Section({initialCards: initialCards[i], renderer}, '.elements__list').addItem();
+};

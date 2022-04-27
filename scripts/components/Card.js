@@ -2,7 +2,7 @@ export class Card {
   constructor(place, link, card, openPopup) {
     this._place = place;
     this._link = link;
-    this._cardTemplate = document.querySelector(card).content;
+    this._cardTemplate = card.content;
     this._cardElement = this._cardTemplate.querySelector('.element').cloneNode(true);
     this._heartButton = this._cardElement.querySelector('.element__svg-heart');
     this._deleteButton = this._cardElement.querySelector('.element__button-delete');
