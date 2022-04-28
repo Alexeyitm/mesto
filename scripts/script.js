@@ -1,41 +1,41 @@
-import { initialCards, validateSetting, popupUser, popupCard, popupImage, popupContainerUser, popupContainerCard, popupFigure,
-  buttonEdit, buttonAdd, buttonCloseUser, buttonCloseCard, buttonClosePicture,
+import { initialCards, validateSetting, popupUser, popupCard, popupImage, buttonEdit, buttonAdd, buttonClosePicture, 
   formElementEdit, formElementAdd, nameElement, textElement, nameInput, jobInput, placeInput, linkInput, cardsContainer
- } from './utils/constants.js';
-import { Card } from './components/Card.js';
+} from './utils/constants.js';
 import { FormValidator } from './components/FormValidator.js';
 import { Section } from './components/Section.js';
-
+import { Popup } from './components/Popup.js';
 import { renderer } from './utils/utils.js';
 
 const formEdit = new FormValidator(validateSetting, formElementEdit);
 const formAdd = new FormValidator(validateSetting, formElementAdd);
 
+const popupEdit = new Popup(popupUser);
+const popupAdd = new Popup(popupCard);
 // functions
 // open popup
-export const openPopup = (element) => {
-  document.addEventListener('keydown', closeByEsc);
-  element.classList.add('popup_opened');
-};
+//const openPopup = (element) => {
+  //document.addEventListener('keydown', closeByEsc);
+//  element.classList.add('popup_opened');
+//};
 
 // close popup
-const closePopup = (element) => {
-  document.removeEventListener('keydown', closeByEsc);
-  element.classList.remove('popup_opened'); 
-};
+//const closePopup = (element) => {
+  //document.removeEventListener('keydown', closeByEsc);
+//  element.classList.remove('popup_opened'); 
+//};
 
 // press overlay
-const pressOverlay = (popup) => {
-  closePopup(popup);
-};
+//const pressOverlay = (popup) => {
+//  closePopup(popup);
+//};
 
 // press Esc
-const closeByEsc = (evt) => {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup); 
-  };
-};
+//const closeByEsc = (evt) => {
+//  if (evt.key === 'Escape') {
+//    const openedPopup = document.querySelector('.popup_opened');
+//    closePopup(openedPopup); 
+//  };
+//};
 
 // submitPopupEdit
 const submitPopupEdit = (evt) => {
@@ -60,51 +60,52 @@ const submitPopupCard = (evt) => {
 // popupUser open listener
 buttonEdit.addEventListener('click', () => {
   nameInput.value = nameElement.textContent;
-  jobInput.value = textElement.textContent;  
-  openPopup(popupUser);
+  jobInput.value = textElement.textContent;
+  popupEdit.open();
   formEdit.resetErrors();
 });
 
 // popupUser overlay close listener
-popupUser.addEventListener('click', () => {
-  pressOverlay(popupUser);    
-});
-popupContainerUser.addEventListener('click', (evt) => {
-  evt.stopPropagation();
-});
+//popupUser.addEventListener('click', () => {
+//  pressOverlay(popupUser);    
+//});
+//popupContainerUser.addEventListener('click', (evt) => {
+//  evt.stopPropagation();
+//});
 
 // popupUser close listener
-buttonCloseUser.addEventListener('click', () => {
-  closePopup(popupUser);
-});
+//buttonCloseUser.addEventListener('click', () => {
+//  popupEdit.close();
+  //closePopup(popupUser);
+//});
 
 // popupCard open listener
 buttonAdd.addEventListener('click', () => {
   formAdd.setSubmitButtonStateDisabled();
-  openPopup(popupCard);
+  popupAdd.open();
   formAdd.resetErrors();
 });
 
 // popupCard overlay close listener
-popupCard.addEventListener('click', () => {
-  pressOverlay(popupCard);    
-});
-popupContainerCard.addEventListener('click', (evt) => {
-  evt.stopPropagation();
-});
+//popupCard.addEventListener('click', () => {
+//  pressOverlay(popupCard);    
+//});
+//popupContainerCard.addEventListener('click', (evt) => {
+//  evt.stopPropagation();
+//});
 
 // popupCard close listener
-buttonCloseCard.addEventListener('click', () => {
-  closePopup(popupCard);
-});
+//buttonCloseCard.addEventListener('click', () => {
+//  popupAdd.close();
+//});
 
 // picture overlay close listener
-popupImage.addEventListener('click', () => {
-  pressOverlay(popupImage);    
-});
-popupFigure.addEventListener('click', (evt) => {
-  evt.stopPropagation();
-});
+//popupImage.addEventListener('click', () => {
+//  pressOverlay(popupImage);    
+//});
+//popupFigure.addEventListener('click', (evt) => {
+//  evt.stopPropagation();
+//});
 
 // picture close listener
 buttonClosePicture.addEventListener('click', () => {

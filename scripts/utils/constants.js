@@ -38,15 +38,10 @@ export const validateSetting = {
 export const popupUser = document.querySelector('.popup_user');
 export const popupCard = document.querySelector('.popup_card');
 export const popupImage = document.querySelector('.popup_image');
-export const popupContainerUser = document.querySelector('.popup__container_user');
-export const popupContainerCard = document.querySelector('.popup__container_card');
-export const popupFigure = document.querySelector('.popup__figure');
 
 // buttons
 export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
-export const buttonCloseUser = popupUser.querySelector('.popup__button-close');
-export const buttonCloseCard = popupCard.querySelector('.popup__button-close');
 export const buttonClosePicture = popupImage.querySelector('.popup__button-close');
 
 //inputs and elements
