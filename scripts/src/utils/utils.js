@@ -1,8 +1,7 @@
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
 import { templateElement, nameElement, textElement, nameInput, jobInput, placeInput, linkInput, cardsContainer } from './constants.js';
 import { popupWithPicture } from '../../../pages/index.js';
-
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
 
 export const openPopup = (element) => {
   element.classList.add('popup_opened');
