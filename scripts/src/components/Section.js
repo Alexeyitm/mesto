@@ -1,4 +1,4 @@
-export class Section {
+export default class Section {
   constructor(obj, container) {
     this._items = obj.initialCards;
     this._renderer = obj.renderer;
@@ -11,6 +11,6 @@ export class Section {
   }
 
   addItem = () => {
-      document.querySelector(this._container).append(this.renderList());
+    document.querySelector(this._container).append(this.renderList());
   }
 }

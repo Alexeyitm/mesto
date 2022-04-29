@@ -42,7 +42,6 @@ export const popupImage = document.querySelector('.popup_image');
 // buttons
 export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
-export const buttonClosePicture = popupImage.querySelector('.popup__button-close');
 
 //inputs and elements
 export const formElementEdit = document.querySelector('.popup__form_edit');
