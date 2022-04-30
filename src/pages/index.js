@@ -1,3 +1,5 @@
+import './index.css';
+
 import { initialCards, validateSetting, popupUser, popupCard, popupImage, buttonEdit,
   nameElement, textElement, buttonAdd, formElementEdit, formElementAdd} from '../utils/constants.js';
 import { renderer, submitPopupEdit, submitPopupAdd } from '../utils/utils.js';
