@@ -1,11 +1,11 @@
 import { initialCards, validateSetting, popupUser, popupCard, popupImage, buttonEdit,
-  nameElement, textElement, buttonAdd, formElementEdit, formElementAdd} from '../scripts/src/utils/constants.js';
-import { renderer, submitPopupEdit, submitPopupAdd } from '../scripts/src/utils/utils.js';
-import FormValidator from '../scripts/src/components/FormValidator.js';
-import Section from '../scripts/src/components/Section.js';
-import PopupWithImage from "../scripts/src/components/PopupWithImage.js"
-import PopupWithForm from "../scripts/src/components/PopupWithForm.js"
-import UserInfo from "../scripts/src/components/UserInfo.js"
+  nameElement, textElement, buttonAdd, formElementEdit, formElementAdd} from '../utils/constants.js';
+import { renderer, submitPopupEdit, submitPopupAdd } from '../utils/utils.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from "../components/PopupWithImage.js"
+import PopupWithForm from "../components/PopupWithForm.js"
+import UserInfo from "../components/UserInfo.js"
 
 const formEdit = new FormValidator(validateSetting, formElementEdit);
 const formAdd = new FormValidator(validateSetting, formElementAdd);
