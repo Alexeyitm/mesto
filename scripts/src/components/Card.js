@@ -8,7 +8,6 @@ export default class Card {
     this._deleteButton = this._cardElement.querySelector('.element__button-delete');
     this._pictureButton = this._cardElement.querySelector('.element__img');
     this._popupPicture = document.querySelector('.popup__picture');
-    
     this._handleCardClick = handleCardClick;
   };
 

@@ -1,3 +1,25 @@
+// popup
+export const popupUser = document.querySelector('.popup_user');
+export const popupCard = document.querySelector('.popup_card');
+export const popupImage = document.querySelector('.popup_image');
+
+// buttons
+export const buttonEdit = document.querySelector('.profile__button-edit');
+export const buttonAdd = document.querySelector('.profile__button-add');
+
+// inputs and elements
+export const formElementEdit = document.querySelector('.popup__form_edit');
+export const formElementAdd = document.querySelector('.popup__form_add');
+export const nameElement = document.querySelector('.profile__name');
+export const textElement = document.querySelector('.profile__text');
+export const nameInput = document.querySelector('.popup__input_field_name');
+export const jobInput = document.querySelector('.popup__input_field_job');
+export const placeInput = document.querySelector('.popup__input_field_place');
+export const linkInput = document.querySelector('.popup__input_field_link');
+export const cardsContainer = document.querySelector('.elements__list');
+export const templateElement = document.querySelector('.element-template');
+
+
 export const initialCards = [
   {
     name: 'Архыз',
@@ -33,24 +55,3 @@ export const validateSetting = {
   buttonAddPopupHover: 'popup__button-add_hover',
   inputInvalid: 'popup__input_invalid',
 };
-
-// popup
-export const popupUser = document.querySelector('.popup_user');
-export const popupCard = document.querySelector('.popup_card');
-export const popupImage = document.querySelector('.popup_image');
-
-// buttons
-export const buttonEdit = document.querySelector('.profile__button-edit');
-export const buttonAdd = document.querySelector('.profile__button-add');
-
-//inputs and elements
-export const formElementEdit = document.querySelector('.popup__form_edit');
-export const formElementAdd = document.querySelector('.popup__form_add');
-export const nameElement = document.querySelector('.profile__name');
-export const textElement = document.querySelector('.profile__text');
-export const nameInput = document.querySelector('.popup__input_field_name');
-export const jobInput = document.querySelector('.popup__input_field_job');
-export const placeInput = document.querySelector('.popup__input_field_place');
-export const linkInput = document.querySelector('.popup__input_field_link');
-export const cardsContainer = document.querySelector('.elements__list');
-export const templateElement = document.querySelector('.element-template');

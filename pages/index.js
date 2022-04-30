@@ -1,4 +1,5 @@
-import { initialCards, validateSetting, popupUser, popupCard, popupImage, buttonEdit, buttonAdd, formElementEdit, formElementAdd} from '../scripts/src/utils/constants.js';
+import { initialCards, validateSetting, popupUser, popupCard, popupImage, buttonEdit,
+  nameElement, textElement, buttonAdd, formElementEdit, formElementAdd} from '../scripts/src/utils/constants.js';
 import { renderer, submitPopupEdit, submitPopupAdd } from '../scripts/src/utils/utils.js';
 import FormValidator from '../scripts/src/components/FormValidator.js';
 import Section from '../scripts/src/components/Section.js';
@@ -15,7 +16,7 @@ const popupWithFormAdd = new PopupWithForm(popupCard, submitPopupAdd);
 // listeners
 // popupUser open listener
 buttonEdit.addEventListener('click', () => {
-  new UserInfo({name: '.profile__name', job: '.profile__text'}).setUserInfo();
+  new UserInfo({name: nameElement.textContent, job: textElement.textContent}).setUserInfo();
   popupWithFormEdit.open();
   formEdit.resetErrors();
 });
