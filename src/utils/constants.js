@@ -1,13 +1,10 @@
-// popup
-export const popupUser = document.querySelector('.popup_user');
-export const popupCard = document.querySelector('.popup_card');
-export const popupImage = document.querySelector('.popup_image');
-
 // buttons
 export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
 
 // inputs and elements
+export const popupUser = document.querySelector('.popup_user');
+export const popupCard = document.querySelector('.popup_card');
 export const formElementEdit = document.querySelector('.popup__form_edit');
 export const formElementAdd = document.querySelector('.popup__form_add');
 export const nameElement = document.querySelector('.profile__name');

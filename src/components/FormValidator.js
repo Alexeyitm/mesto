@@ -1,10 +1,10 @@
 export default class FormValidator {
-  constructor(obj, formElement) {
-    this._obj = obj;
+  constructor(validateSetting, formElement) {
+    this._setting = validateSetting;
     this._formElement = formElement;
-    this._inputList = Array.from(this._formElement.querySelectorAll(obj.input));
+    this._inputList = Array.from(this._formElement.querySelectorAll(validateSetting.input));
 
-    this._button = this._formElement.querySelector(this._obj.buttonAddPopup);
+    this._button = this._formElement.querySelector(validateSetting.buttonAddPopup);
   };
 
   enableValidation() {
@@ -27,10 +27,10 @@ export default class FormValidator {
 
   _setCustomError() {
     if (!this._inputElement.validity.valid) {
-      this._inputElement.classList.add(this._obj.inputInvalid);
+      this._inputElement.classList.add(this._setting.inputInvalid);
     }
     else {
-      this._inputElement.classList.remove(this._obj.inputInvalid);
+      this._inputElement.classList.remove(this._setting.inputInvalid);
     }
   };
 
@@ -41,14 +41,14 @@ export default class FormValidator {
 
   setSubmitButtonStateActive() {
     if (this._formElement.checkValidity()) {
-      this._button.classList.remove(this._obj.buttonAddPopupInvalid);
+      this._button.classList.remove(this._setting.buttonAddPopupInvalid);
       this._button.removeAttribute('disabled');
     }
   };
 
   setSubmitButtonStateDisabled() {
     if (!this._formElement.checkValidity()) {
-      this._button.classList.add(this._obj.buttonAddPopupInvalid);
+      this._button.classList.add(this._setting.buttonAddPopupInvalid);
       this._button.setAttribute('disabled', 'disabled');
     }
   };
@@ -61,6 +61,6 @@ export default class FormValidator {
 
   _resetInputError(input) {
     document.querySelector(`#${input.id}-error`).textContent = "";
-    input.classList.remove(this._obj.inputInvalid);
+    input.classList.remove(this._setting.inputInvalid);
   }
 };
