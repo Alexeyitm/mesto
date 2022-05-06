@@ -2,6 +2,8 @@ export default class Card {
   constructor(place, link, cardSelector, handleCardClick) {
     this._place = place;
     this._link = link;
+    this._place = place;
+    this._link = link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   };
@@ -31,7 +33,7 @@ export default class Card {
     this._deleteButton.closest('.element').remove();
   };
 
-  generateCard = () => {
+  generateCard = (item) => {
     this._cardElement = this._getTemplate();
 
     this._cardElement.querySelector('.element__figcaption').textContent = this._place;
