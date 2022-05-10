@@ -5,7 +5,9 @@
 .header{border-bottom:1px solid rgba(84,84,84,.7);box-sizing:border-box;height:74px;margin:0 auto;max-width:880px;position:relative}@media screen and (min-width:320px) and (max-width:1024px){.header{height:calc(47.81818px + 2.55682vw);max-width:calc(65.45455px + 79.54545vw)}}
 .header__logo{background:url(bbe2a6eafac19c3d031c.svg) no-repeat;background-size:contain;height:33px;width:142px}@media screen and (min-width:320px) and (max-width:1024px){.header__logo{margin-left:calc(39.27273px - 3.83523vw)}}@media screen and (max-width:767px){.header__logo{height:24.4px;width:103.74px}}
 .profile{display:flex;margin:0 auto;padding:40px 0 51px;width:880px}@media screen and (min-width:320px) and (max-width:1024px){.profile{padding:calc(42.90909px - .28409vw) 0 calc(29.18182px + 2.13068vw);width:calc(10.18182px + 84.94318vw)}}@media screen and (max-width:767px){.profile{align-items:center;flex-direction:column}}
-.profile__avatar{border-radius:50%;cursor:pointer;height:120px;margin-right:30px;width:120px}@media screen and (max-width:767px){.profile__avatar{margin-right:0}}
+.profile__photo{border-radius:50%;cursor:pointer;height:120px;margin-right:30px;position:relative;width:120px}@media screen and (max-width:767px){.profile__photo{margin-right:0}}
+.profile__overlay{background-color:rgba(0,0,0,.8);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat;background-size:auto;height:100%;opacity:0;position:absolute;transition:opacity .3s ease;width:100%;z-index:1}.profile__overlay:hover{opacity:1}@media screen and (max-width:767px){.profile__overlay{margin-right:0}}
+.profile__avatar{border-radius:50%;height:100%;position:absolute;width:100%}
 .profile__info{margin-top:23px;position:relative;width:336px}
 .profile__author{display:flex;flex-direction:row;justify-content:space-between;max-width:336px}@media screen and (min-width:320px) and (max-width:768px){.profile__author{max-width:calc(84px + 32.8125vw)}}@media screen and (max-width:767px){.profile__author{justify-content:center;margin:0 auto;position:relative;text-align:center}}
 .profile__name{color:#fff;font-size:42px;font-style:normal;font-weight:500;line-height:1.14;margin:0;max-width:294px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (min-width:320px) and (max-width:768px){.profile__name{font-size:calc(16.28571px + 3.34821vw);line-height:calc(22.28571px + 3.34821vw);max-width:calc(114px + 23.4375vw)}}
@@ -28,8 +30,11 @@
 .popup{background-color:rgba(0,0,0,.5);display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transition:visibility .3s,opacity .3s linear;visibility:hidden;width:100%}
 .popup_opened{opacity:1!important;visibility:visible!important}
 .popup__container{background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);display:flex;height:330px;justify-content:center;left:50%;position:fixed;top:50%;transform:translate(-50%,-50%);width:430px}@media screen and (min-width:320px) and (max-width:1280px){.popup__container{height:calc(319.33333px + .83333vw);width:calc(232.66667px + 15.41667vw)}}
+.popup__container_avatar{height:272px}
+.popup__container_confirm{height:181px}
 .popup__button-close{background-color:transparent;border:0;cursor:pointer;height:32px;padding:0;position:absolute;right:-40px;top:-40px;width:32px}.popup__button-close:hover{opacity:.6}.popup__button-close:after{background:url(039f1f5203f653b4bacd.svg) no-repeat;background-size:contain;content:"";height:100%;left:0;position:absolute;top:0;width:100%}@media screen and (min-width:320px) and (max-width:1280px){.popup__button-close{height:calc(16px + 1.25vw);width:calc(16px + 1.25vw)}}@media screen and (max-width:767px){.popup__button-close{right:0;top:-36px}}
 .popup__content{display:flex;flex-direction:column;height:259px;margin-top:34px;width:358px}@media screen and (min-width:320px) and (max-width:1280px){.popup__content{height:calc(276.33333px - 1.35417vw);margin-top:calc(22px + .9375vw);width:calc(198px + 12.5vw)}}
+.popup__content_comfirm{height:111px}
 .popup__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:330px}@media screen and (min-width:320px) and (max-width:1280px){.popup__title{font-size:calc(16px + .625vw);line-height:calc(21.33333px + .20833vw)}}
 .popup__form{display:flex;flex-direction:column}
 .popup__input{border:0;border-bottom:1px solid rgba(0,0,0,.2);color:#000;font-size:14px;font-style:normal;font-weight:400;height:14px;line-height:17px;margin-top:30px;padding:0 0 10px}.popup__input:first-child{margin-top:54px}@media screen and (min-width:320px) and (max-width:1280px){.popup__input:first-child{margin-top:calc(82px - 2.1875vw)}}
@@ -38,6 +43,7 @@
 .popup__input-error_number_one{margin-top:79px}@media screen and (min-width:320px) and (max-width:1280px){.popup__input-error_number_one{margin-top:calc(107px - 2.1875vw)}}
 .popup__input-error_number_two{margin-top:134px}@media screen and (min-width:320px) and (max-width:1280px){.popup__input-error_number_two{margin-top:calc(162px - 2.1875vw)}}
 .popup__button-add{background-color:#000;border:0;border-radius:2px;color:#fff;cursor:pointer;display:flex;font-size:18px;font-style:normal;font-weight:400;height:50px;justify-content:center;line-height:22px;margin-top:48px;padding:14px 0 0;text-align:center;width:100%}.popup__button-add:hover:enabled{opacity:.8}@media screen and (min-width:320px) and (max-width:1280px){.popup__button-add{font-size:calc(12.66667px + .41667vw);height:calc(44.66667px + .41667vw);line-height:calc(15.33333px + .52083vw);margin-top:calc(44px + .3125vw)}}
+.popup__button-add_confirm{margin-top:38px}
 .popup__button-add_invalid{background-color:#fff;border:1px solid #000;color:#000;cursor:auto;opacity:.2}
 .popup_image{background-color:rgba(0,0,0,.9);display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transition:visibility .5s,opacity .5s linear;visibility:hidden;width:100%}
 .popup__figure{background-color:transparent;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;left:50%;margin:0 auto;max-height:75vh;max-width:75vw;position:fixed;top:50%;transform:translate(-50%,-50%)}
