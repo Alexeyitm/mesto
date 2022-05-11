@@ -7,7 +7,6 @@ export default class Section {
 
   renderList = () => {
     this._items.forEach((item) => this._container.prepend(this._renderer(item)));
-    
   }
 
   addItem = (card) => {

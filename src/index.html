@@ -18,26 +18,42 @@
 
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./image/kusto.jpg')%>" alt="Жак-Ив Кусто">
+        <div class="profile__photo">
+          <div class="profile__overlay"></div>
+          <img class="profile__avatar" src="" alt="Жак-Ив Кусто">
+        </div>
         <div class="profile__info">
           <div class="profile__author">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__button-edit" type="button"></button>
           </div>
-          <p class="profile__text">Исследователь океана</p>
+          <p class="profile__text"></p>
         </div>
         <button class="profile__button-add" type="button"></button>
       </section>
 
       <section class="elements">
         <ul class="elements__list"></ul>
-      </section>
-      
+      </section> 
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+
+    <div class="popup popup_avatar">
+      <div class="popup__container popup__container_avatar container">
+        <button class="popup__button-close" type="button"></button>
+        <div class="popup__content">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="popup__form popup__form_avatar" name="Form" novalidate>
+            <input id="link" class="popup__input popup__input_field_avatar-link" type="url" name="Link" placeholder="Ссылка на картинку" required>
+            <span id="link-error" class="popup__input-error popup__input-error_number_one"></span>
+            <button class="popup__button-add" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <div class="popup popup_user">
       <div class="popup__container popup__container_user container">
@@ -79,6 +95,18 @@
       </figure>
     </div>
 
+    <div class="popup popup_comfirm">
+      <div class="popup__container popup__container_confirm container">
+        <button class="popup__button-close" type="button"></button>
+        <div class="popup__content popup__content_comfirm">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="popup__form popup__form_confirm" name="Form" novalidate>
+            <button class="popup__button-add popup__button-add_confirm" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <template class="element-template">
       <li class="element">
         <article class="element__card">
@@ -86,7 +114,10 @@
           <img class="element__img">
           <div class="element__description">
             <h2 class="element__figcaption"></h2>
-            <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+            <div class="element__like">
+              <button class="element__svg-heart element__svg-heart_hover" type="button"></button>
+              <div class="element__count"></div>
+            </div>
           </div>
         </article>
       </li>

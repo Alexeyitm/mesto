@@ -1,3 +1,5 @@
+import { popupWithConfirm } from '../pages/index.js'
+
 export default class Card {
   constructor(place, link, cardSelector, handleCardClick) {
     this._place = place;
@@ -30,10 +32,11 @@ export default class Card {
   };
 
   _deleteCard = () => {
-    this._deleteButton.closest('.element').remove();
+    //this._deleteButton.closest('.element').remove();
+    popupWithConfirm.open();
   };
 
-  generateCard = (item) => {
+  generateCard = () => {
     this._cardElement = this._getTemplate();
 
     this._cardElement.querySelector('.element__figcaption').textContent = this._place;
