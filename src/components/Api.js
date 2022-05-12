@@ -1,19 +1,23 @@
-import { nameInput, jobInput, avatarInput, nameElement, textElement, profileAvatar } from '../utils/constants.js';
+import { nameInput, jobInput, avatarInput, placeInput, linkInput, nameElement, textElement, profileAvatar } from '../utils/constants.js';
 
 export default class Api {
-  constructor(cohort, token) {
-    this._cohort = cohort;
-    this._token = token;
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
   
+  //получаем даные юзера
   getUser() {
-    this._request = fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me`, {
+    fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      headers: {
-        authorization: `${this._token}`
-      }
+      headers: this._headers
     })
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
     .then(get => {
       nameElement.textContent = get.name;
       textElement.textContent = get.about;
@@ -22,45 +26,67 @@ export default class Api {
     });
   }
 
-  //getCards() {
-  //  return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
-  //    method: 'GET',
-  //    headers: {
-  //      authorization: `${this._token}`
-  //    }
-  //  })
-  //  .then(res => {
-  //    return res.json();
-  //  })
-  //}
+  //получаем массив карточек
+  getCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'GET',
+      headers: this._headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
 
+  //отправляем имя и описание
   setUser() {
-    fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me`, {
+    fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: `${this._token}`,
-          'Content-Type': 'application/json'
-        },
+      headers: this._headers,
       body: JSON.stringify({
         name: nameInput.value,
         about: jobInput.value
       })
     })
-    this.getUser();
+    nameElement.textContent = nameInput.value,
+    textElement.textContent = jobInput.value,
+    profileAvatar.alt = nameInput.value;
   }
 
+  //отправляем новую карточку
+  setCard() {
+    fetch(`${this._baseUrl}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: placeInput.value,
+        link: linkInput.value
+      })
+    })
+  }
+
+  //удаляем карточку
+  deleteCard(cardId) {
+    fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+  }
+
+
+
+  //отправляем новый аватар
   setAvatar() {
-    fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me/avatar`, {
+    fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: `${this._token}`,
-          'Content-Type': 'application/json'
-        },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatarInput.value
       })
     })
-    this.getUser();
+    profileAvatar.src = avatarInput.value;
   }
 
 

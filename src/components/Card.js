@@ -1,9 +1,10 @@
 import { popupWithConfirm } from '../pages/index.js'
 
 export default class Card {
-  constructor(place, link, cardSelector, handleCardClick) {
+  constructor(place, link, likes, cardSelector, handleCardClick) {
     this._place = place;
     this._link = link;
+    this._likes = likes;
     this._place = place;
     this._link = link;
     this._cardSelector = cardSelector;
@@ -32,7 +33,7 @@ export default class Card {
   };
 
   _deleteCard = () => {
-    //this._deleteButton.closest('.element').remove();
+    this._deleteButton.closest('.element').remove();
     popupWithConfirm.open();
   };
 
@@ -42,6 +43,7 @@ export default class Card {
     this._cardElement.querySelector('.element__figcaption').textContent = this._place;
     this._cardElement.querySelector('.element__img').alt = this._place;
     this._cardElement.querySelector('.element__img').src = this._link;
+    this._cardElement.querySelector('.element__count').textContent = this._likes;
     
     this._setEventListeners();
   
