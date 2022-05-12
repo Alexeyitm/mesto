@@ -19,6 +19,7 @@
 .element{list-style-type:none}
 .element__card{background-color:#fff;border-radius:10px;display:flex;flex-direction:column;height:100%;position:relative;width:100%}
 .element__button-delete{background-color:transparent;border:0;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;width:18px}.element__button-delete:hover{opacity:.6}.element__button-delete:after{background:url(ce3b64935accf9b8212e.svg) no-repeat;background-size:contain;content:"";height:100%;left:0;position:absolute;top:0;width:100%}
+.element__button-delete_disabled{display:none}
 .element__img{border-radius:10px 10px 0 0;cursor:pointer;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
 .element__description{display:flex;justify-content:space-between;margin:25px 15px 25px 21px;position:relative;width:246px}
 .element__figcaption{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:218px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
