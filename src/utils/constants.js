@@ -16,6 +16,7 @@ export const placeInput = document.querySelector('.popup__input_field_place');
 export const linkInput = document.querySelector('.popup__input_field_link');
 export const profileAvatar = document.querySelector('.profile__avatar');
 export const countLike = document.querySelector('.element__count');
+export const containerCards = document.querySelector('.elements__list');
 
 
 
