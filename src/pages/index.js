@@ -115,7 +115,7 @@ buttonAvatar.addEventListener('click', () => {
   formAvatar.setSubmitButtonStateDisabled();
   buttonSubmitPopupAvatar.textContent = 'Сохранить'
   popupWithFormAvatar.open();
-  formEdit.resetErrors();
+  formAvatar.resetErrors();
 });
 
 buttonEdit.addEventListener('click', () => {
