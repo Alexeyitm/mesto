@@ -4,11 +4,11 @@ export default class Api {
     this._headers = options.headers;
 
     this._getJSON = function (res) {{
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }}
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }}
   }
   
   //получаем даные пользователя
@@ -18,11 +18,10 @@ export default class Api {
       headers: this._headers
     })
     .then(res => this._getJSON(res))
-    .then(get => {
-      values.name.textContent = get.name;
-      values.text.textContent = get.about;
-      values.avatar.src = get.avatar;
-      values.avatar.alt = get.name;
+    .then(res => {
+      values.name.textContent = res.name;
+      values.text.textContent = res.about;
+      values.avatar.style.backgroundImage = `url(${res.avatar})`;
     });
   }
 
@@ -79,6 +78,24 @@ export default class Api {
       body: JSON.stringify({
         avatar: src.value
       })
+    })
+    .then(res => this._getJSON(res))
+  }
+
+  //ставим лайк
+  addLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+    .then(res => this._getJSON(res))
+  }
+
+  //убираем лайк
+  deleteLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: this._headers
     })
     .then(res => this._getJSON(res))
   }

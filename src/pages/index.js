@@ -1,6 +1,6 @@
 import './index.css';
-import { validateSetting, buttonEdit, buttonAvatar, buttonAdd, formElementAvatar, formElementEdit, nameInput, jobInput, formElementAdd,
-  nameElement, textElement, profileAvatar, avatarInput, placeInput, linkInput} from '../utils/constants.js';
+import { validateSetting, buttonEdit, buttonAvatar, buttonAdd, formElementAvatar, formElementEdit, nameInput, jobInput, formElementAdd, nameElement,
+  textElement, avatarInput, buttonSubmitPopupAvatar, buttonSubmitPopupEdit, buttonSubmitPopupAdd } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
@@ -22,10 +22,16 @@ export const renderer = (item) => {
   return newCard(item);
 };
 
+const renderLoading = (button) => {
+  button.textContent = 'Сохранение...';
+}
+
 const submitPopupAvatar = () => {
+  renderLoading(buttonSubmitPopupAvatar);
+
   api.setAvatar(avatarInput)
     .then(res => {
-      profileAvatar.src = res.avatar;
+      buttonAvatar.style.backgroundImage = `url(${res.avatar})`;
     })
     .catch(err => console.log(err))
 
@@ -33,11 +39,12 @@ const submitPopupAvatar = () => {
 };
 
 const submitPopupEdit = () => {
+  renderLoading(buttonSubmitPopupEdit);
+
   api.setUser({name: nameInput, job: jobInput})
     .then(res => {
       nameElement.textContent = res.name;
       textElement.textContent = res.about;
-      profileAvatar.alt = res.name;
     })
     .catch(err => console.log(err))
 
@@ -45,12 +52,14 @@ const submitPopupEdit = () => {
 };
 
 const submitPopupAdd = (inupts) => {
+  renderLoading(buttonSubmitPopupAdd);
+
   section
     .then(res => {
       res.addItem(inupts)
     })
     .catch(err => console.log(err))
-
+  
   popupWithFormAdd.close();
 };
 
@@ -65,11 +74,11 @@ const popupWithPicture = new PopupWithImage('.popup_image');
 const popupWithFormAvatar = new PopupWithForm('.popup_avatar', submitPopupAvatar);
 const popupWithFormEdit = new PopupWithForm('.popup_user', submitPopupEdit);
 const popupWithFormAdd = new PopupWithForm('.popup_card', submitPopupAdd);
-export const popupWithConfirm = new PopupWithConfirmation('.popup_comfirm', submitPopupConfirm);
+export const popupWithConfirm = new PopupWithConfirmation('.popup_confirm', submitPopupConfirm);
 const formAvatar = new FormValidator(validateSetting, formElementAvatar);
 const formEdit = new FormValidator(validateSetting, formElementEdit);
 const formAdd = new FormValidator(validateSetting, formElementAdd);
-const api = new Api({
+export const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-41',
   headers: {
     authorization: 'eed10f86-1fc3-40f4-979c-57d15047e1b5',
@@ -92,7 +101,7 @@ formAvatar.enableValidation();
 formEdit.enableValidation();
 formAdd.enableValidation();
 
-api.getUser({name: nameElement, text: textElement, avatar: profileAvatar})
+api.getUser({name: nameElement, text: textElement, avatar: buttonAvatar})
 
 section
   .then(result => {
@@ -103,6 +112,7 @@ section
 
 buttonAvatar.addEventListener('click', () => {
   formAvatar.setSubmitButtonStateDisabled();
+  buttonSubmitPopupAvatar.textContent = 'Сохранить'
   popupWithFormAvatar.open();
   formEdit.resetErrors();
 });
@@ -110,12 +120,14 @@ buttonAvatar.addEventListener('click', () => {
 buttonEdit.addEventListener('click', () => {
   const newValues = new UserInfo({name: '.profile__name', job: '.profile__text'});
   newValues.setUserInfo(newValues.getUserInfo());
+  buttonSubmitPopupEdit.textContent = 'Сохранить'
   popupWithFormEdit.open();
   formEdit.resetErrors();
 });
 
 buttonAdd.addEventListener('click', () => {
   formAdd.setSubmitButtonStateDisabled();
+  buttonSubmitPopupAdd.textContent = 'Создать'
   popupWithFormAdd.open();
   formAdd.resetErrors();
 });
