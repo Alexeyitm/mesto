@@ -18,6 +18,6 @@ export default class Section {
       .then(res => {
         this._container.prepend(newCard(res))
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 }

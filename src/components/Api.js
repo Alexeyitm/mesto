@@ -35,7 +35,7 @@ export default class Api {
   }
   
 
-  //отправляем имя и описание
+  //устанавливаем имя и описание
   setUser(user) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
@@ -45,10 +45,10 @@ export default class Api {
         about: user.job.value
       })
     })
-    .then(res => this._getJSON(res));
+    .then(res => this._getJSON(res))
   }
 
-  //отправляем новую карточку
+  //устанавливаем новую карточку
   setCard(card) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
@@ -59,7 +59,6 @@ export default class Api {
       })
     })
     .then(res => this._getJSON(res))
-    .catch(err => console.log(err))
   }
 
   //удаляем карточку
@@ -70,7 +69,7 @@ export default class Api {
     })
   }
 
-  //отправляем новый аватар
+  //устанавливаем новый аватар
   setAvatar(src) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',

@@ -33,7 +33,6 @@ export default class Card {
     this._countLike = this._cardElement.querySelector('.element__count');
     this._response = function (res) {{
       this._countLike.textContent = res.likes.length;
-      console.log(this._likes)
     }}
 
     if(!this._heartButton.classList.contains('element__svg-heart_active')) {

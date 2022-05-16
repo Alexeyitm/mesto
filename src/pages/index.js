@@ -33,7 +33,7 @@ const submitPopupAvatar = () => {
     .then(res => {
       buttonAvatar.style.backgroundImage = `url(${res.avatar})`;
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
   popupWithFormAvatar.close();
 };
@@ -46,7 +46,7 @@ const submitPopupEdit = () => {
       nameElement.textContent = res.name;
       textElement.textContent = res.about;
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
   popupWithFormEdit.close();
 };
@@ -58,14 +58,14 @@ const submitPopupAdd = (inupts) => {
     .then(res => {
       res.addItem(inupts)
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
   
   popupWithFormAdd.close();
 };
 
 const submitPopupConfirm = (id) => {
   api.deleteCard(id)
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
   popupWithConfirm.close();
 };
@@ -102,12 +102,13 @@ formEdit.enableValidation();
 formAdd.enableValidation();
 
 api.getUser({name: nameElement, text: textElement, avatar: buttonAvatar})
+  .catch(err => console.log(err));
 
 section
   .then(result => {
     result.renderList();
   })
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
 
 
 buttonAvatar.addEventListener('click', () => {
