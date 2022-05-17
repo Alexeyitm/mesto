@@ -12,17 +12,12 @@ export default class Api {
   }
   
   //получаем даные пользователя
-  getUser(values) {
+  getUser() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
     .then(res => this._getJSON(res))
-    .then(res => {
-      values.name.textContent = res.name;
-      values.text.textContent = res.about;
-      values.avatar.style.backgroundImage = `url(${res.avatar})`;
-    });
   }
 
   //получаем массив карточек
@@ -67,6 +62,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
+    .then(res => this._getJSON(res))
   }
 
   //устанавливаем новый аватар

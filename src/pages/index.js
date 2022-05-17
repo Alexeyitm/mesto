@@ -1,3 +1,5 @@
+let userId;
+
 import './index.css';
 import { validateSetting, buttonEdit, buttonAvatar, buttonAdd, formElementAvatar, formElementEdit, nameInput, jobInput, formElementAdd, nameElement,
   textElement, avatarInput, buttonSubmitPopupAvatar, buttonSubmitPopupEdit, buttonSubmitPopupAdd } from '../utils/constants.js';
@@ -12,7 +14,7 @@ import Api from '../components/Api';
 
 
 export function newCard(item) {
-  const card = new Card(item, '.element-template', () => {
+  const card = new Card(item, userId, '.element-template', () => {
     popupWithPicture.open(item.name, item.link);
   }); 
   return card.generateCard();  
@@ -32,10 +34,10 @@ const submitPopupAvatar = () => {
   api.setAvatar(avatarInput)
     .then(res => {
       buttonAvatar.style.backgroundImage = `url(${res.avatar})`;
+      popupWithFormAvatar.close();
     })
-    .catch(err => console.log(err));
-
-  popupWithFormAvatar.close();
+    .catch(err => console.log(err))
+    .finally(setTimeout(function() {buttonSubmitPopupAvatar.textContent = 'Сохранить'}, 1000));
 };
 
 const submitPopupEdit = () => {
@@ -45,10 +47,10 @@ const submitPopupEdit = () => {
     .then(res => {
       nameElement.textContent = res.name;
       textElement.textContent = res.about;
+      popupWithFormEdit.close();
     })
-    .catch(err => console.log(err));
-
-  popupWithFormEdit.close();
+    .catch(err => console.log(err))
+    .finally(setTimeout(function() {buttonSubmitPopupEdit.textContent = 'Сохранить'}, 1000));
 };
 
 const submitPopupAdd = (inupts) => {
@@ -56,18 +58,20 @@ const submitPopupAdd = (inupts) => {
 
   section
     .then(res => {
-      res.addItem(inupts)
+      res.addItem(inupts);
+      popupWithFormAdd.close();
     })
-    .catch(err => console.log(err));
-  
-  popupWithFormAdd.close();
+    .catch(err => console.log(err))
+    .finally(setTimeout(function() {buttonSubmitPopupAdd.textContent = 'Создать'}, 1000));
 };
 
-const submitPopupConfirm = (id) => {
+const submitPopupConfirm = (id, card) => {
   api.deleteCard(id)
-    .catch(err => console.log(err));
-
-  popupWithConfirm.close();
+  .then(res => {
+    card.remove();
+    popupWithConfirm.close();
+  })
+  .catch(err => console.log(err));
 };
 
 const popupWithPicture = new PopupWithImage('.popup_image');
@@ -101,19 +105,24 @@ formAvatar.enableValidation();
 formEdit.enableValidation();
 formAdd.enableValidation();
 
-api.getUser({name: nameElement, text: textElement, avatar: buttonAvatar})
+api.getUser()
+  .then(res => {
+    nameElement.textContent = res.name;
+    textElement.textContent = res.about;
+    buttonAvatar.style.backgroundImage = `url(${res.avatar})`;
+    userId = res._id;
+  })
   .catch(err => console.log(err));
 
 section
-  .then(result => {
-    result.renderList();
+  .then(res => {
+    res.renderItems();
   })
   .catch(err => console.log(err));
 
 
 buttonAvatar.addEventListener('click', () => {
   formAvatar.setSubmitButtonStateDisabled();
-  buttonSubmitPopupAvatar.textContent = 'Сохранить'
   popupWithFormAvatar.open();
   formAvatar.resetErrors();
 });
@@ -121,14 +130,12 @@ buttonAvatar.addEventListener('click', () => {
 buttonEdit.addEventListener('click', () => {
   const newValues = new UserInfo({name: '.profile__name', job: '.profile__text'});
   newValues.setUserInfo(newValues.getUserInfo());
-  buttonSubmitPopupEdit.textContent = 'Сохранить'
   popupWithFormEdit.open();
   formEdit.resetErrors();
 });
 
 buttonAdd.addEventListener('click', () => {
   formAdd.setSubmitButtonStateDisabled();
-  buttonSubmitPopupAdd.textContent = 'Создать'
   popupWithFormAdd.open();
   formAdd.resetErrors();
 });

@@ -8,7 +8,7 @@ export default class Section {
     this._api = api;
   }
 
-  renderList = () => {
+  renderItems = () => {
     this._items.forEach((item) => {
       this._container.append(this._renderer(item))});
   }
