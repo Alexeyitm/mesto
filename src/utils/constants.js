@@ -6,7 +6,6 @@ export const buttonSubmitPopupAvatar = document.querySelector('.popup__button-ad
 export const buttonSubmitPopupEdit = document.querySelector('.popup__button-add_user');
 export const buttonSubmitPopupAdd = document.querySelector('.popup__button-add_card');
 
-
 // inputs and elements
 export const formElementAvatar = document.querySelector('.popup__form_avatar');
 export const formElementEdit = document.querySelector('.popup__form_edit');
@@ -16,6 +15,7 @@ export const textElement = document.querySelector('.profile__text');
 export const avatarInput = document.querySelector('.popup__input_field_avatar-link');
 export const nameInput = document.querySelector('.popup__input_field_name');
 export const jobInput = document.querySelector('.popup__input_field_job');
+export const avatarImg = document.querySelector('.profile__avatar-img');
 
 
 export const validateSetting = {

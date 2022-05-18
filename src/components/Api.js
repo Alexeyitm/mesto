@@ -31,26 +31,26 @@ export default class Api {
   
 
   //устанавливаем имя и описание
-  setUser(user) {
+  setUser(inputs) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: user.name.value,
-        about: user.job.value
+        name: inputs.Name,
+        about: inputs.Job
       })
     })
     .then(res => this._getJSON(res))
   }
 
   //устанавливаем новую карточку
-  setCard(card) {
+  setCard(item) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: card.Place,
-        link: card.Link,
+        name: item.Place,
+        link: item.Link,
       })
     })
     .then(res => this._getJSON(res))
@@ -66,12 +66,12 @@ export default class Api {
   }
 
   //устанавливаем новый аватар
-  setAvatar(src) {
+  setAvatar(input) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: src.value
+        avatar: input.Link
       })
     })
     .then(res => this._getJSON(res))

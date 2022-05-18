@@ -1,13 +1,12 @@
 import { popupWithConfirm } from '../pages/index.js'
-import { api } from '../pages/index.js';
+import { api, newValues } from '../pages/index.js';
 
 export default class Card {
-  constructor(item, userId, cardSelector, handleCardClick) {
+  constructor(item, cardSelector, handleCardClick) {
     this._place = item.name;
     this._link = item.link;
     this._likes = item.likes;
     this._id = item._id;
-    this._userId = userId;
     this._ownerId = item.owner._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -63,14 +62,14 @@ export default class Card {
   };
 
   _removeDeleteButton = () => {
-    if (this._ownerId !== this._userId) {
+    if (this._ownerId !== newValues.getUserId()) {
       this._deleteButton.style.display = 'none';
     }
   }
 
   _activeLike = () => {
     this._likes.forEach((user) => {
-      if (user._id == this._userId) {
+      if (user._id == newValues.getUserId()) {
         this._heartButton.classList.add('element__svg-heart_active');
       }
     })

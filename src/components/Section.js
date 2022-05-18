@@ -1,23 +1,26 @@
 import { newCard } from '../pages/index.js'
+import { popupWithFormAdd } from '../pages/index.js'
+import { buttonSubmitPopupAdd } from '../utils/constants.js'
 
 export default class Section {
-  constructor({result, renderer}, container, api) {
-    this._items = result;
+  constructor({renderer}, container, api) {
     this._renderer = renderer;
     this._container = document.querySelector(container);
     this._api = api;
   }
 
-  renderItems = () => {
-    this._items.forEach((item) => {
+  renderItems = (items) => {
+    items.forEach((item) => {
       this._container.append(this._renderer(item))});
   }
 
-  addItem = (inupts) => {
-    this._api.setCard(inupts)
+  addItem = (item) => {
+    this._api.setCard(item)
       .then(res => {
-        this._container.prepend(newCard(res))
+        this._container.prepend(newCard(res));
+        popupWithFormAdd.close();
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(setTimeout(function() {buttonSubmitPopupAdd.textContent = 'Сохранить'}, 1000));
   }
 }
