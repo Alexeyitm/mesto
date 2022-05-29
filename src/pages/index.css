@@ -1,9 +1,18 @@
+/* Normalize and fonts */
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
+
+/* Page */
 @import url(../blocks/page/page.css);
+
+/* Content */
 @import url(../blocks/content/content.css);
+
+/* Header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+
+/* Profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__button-avatar/profile__button-avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
@@ -13,8 +22,12 @@
 @import url(../blocks/profile/__buton-edit/profile__button-edit.css);
 @import url(../blocks/profile/__text/profile__text.css);
 @import url(../blocks/profile/__button-add/profile__button-add.css);
+
+/* Elements */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__list/elements__list.css);
+
+/* Element */
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__card/element__card.css);
 @import url(../blocks/element/__button-delete/element__button-delete.css);
@@ -26,8 +39,12 @@
 @import url(../blocks/element/__svg-heart/_active/element__svg-heart_active.css);
 @import url(../blocks/element/__svg-heart/_hover/element__svg-heart_hover.css);
 @import url(../blocks/element/__count/element__count.css);
+
+/* Footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* Popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
