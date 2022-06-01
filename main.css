@@ -35,7 +35,7 @@
 .popup__container_confirm{height:181px}
 .popup__button-close{background-color:transparent;border:0;cursor:pointer;height:32px;padding:0;position:absolute;right:-40px;top:-40px;width:32px}.popup__button-close:hover{opacity:.6}.popup__button-close:after{background:url(039f1f5203f653b4bacd.svg) no-repeat;background-size:contain;content:"";height:100%;left:0;position:absolute;top:0;width:100%}@media screen and (min-width:320px) and (max-width:1280px){.popup__button-close{height:calc(16px + 1.25vw);width:calc(16px + 1.25vw)}}@media screen and (max-width:767px){.popup__button-close{right:0;top:-36px}}
 .popup__content{display:flex;flex-direction:column;height:259px;margin-top:34px;width:358px}@media screen and (min-width:320px) and (max-width:1280px){.popup__content{height:calc(276.33333px - 1.35417vw);margin-top:calc(22px + .9375vw);width:calc(198px + 12.5vw)}}
-.popup__content_comfirm{height:111px}
+.popup__content_confirm{height:111px}
 .popup__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:330px}@media screen and (min-width:320px) and (max-width:1280px){.popup__title{font-size:calc(16px + .625vw);line-height:calc(21.33333px + .20833vw)}}
 .popup__form{display:flex;flex-direction:column}
 .popup__input{border:0;border-bottom:1px solid rgba(0,0,0,.2);color:#000;font-size:14px;font-style:normal;font-weight:400;height:14px;line-height:17px;margin-top:30px;padding:0 0 10px}.popup__input:first-child{margin-top:54px}@media screen and (min-width:320px) and (max-width:1280px){.popup__input:first-child{margin-top:calc(82px - 2.1875vw)}}
